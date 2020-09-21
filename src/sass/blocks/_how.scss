@@ -1,0 +1,13 @@
+.how {
+   &__inner {
+      max-height: 1300px;
+   }
+   &__block {
+      &:nth-child(5) {
+         margin-bottom: 0;
+      }
+      &:nth-child(6) {
+         margin-top: 20px;
+      }
+   }
+}

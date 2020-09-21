@@ -1,0 +1,495 @@
+@media (max-width: 1199px) {
+   .container {
+      max-width: 95%;
+   }
+   .header {
+      padding-left: 155px;
+      padding-right: 0px;
+      &__main {
+         .logo {
+            left: 15px
+         }
+      }
+      .search_button {
+         padding: 7px 20px;
+      }
+      .nav {
+         &__item {
+            margin: 0 30px
+         }
+      }
+   }
+   .advantages {
+      padding: 10px 0px;
+   }
+   .catalog {
+      &__card {
+         width: 230px;
+         height: 258px;
+      }
+   }
+   .footer {
+      &__map {
+         width: 246px;
+      }
+   }
+   .about {
+      &__inner {
+         max-height: 1600px;
+      }
+   }
+   .send {
+      &__inner {
+         max-height: 1220px;
+      }
+   }
+   .contacts {
+      &__inner {
+         max-height: 800px;
+      }
+   }
+   .card-page {
+      &__photos {
+         &_img {
+            width: 90px;
+            height: 90px;
+         }
+         &_wrapper {
+            grid-template-columns: repeat(auto-fill,90px);
+         }
+      }
+   }
+}
+
+@media (max-width: 991px) {
+   .header {
+      height: 172px;
+      padding-left: 136px;
+      .contacts {
+         flex-wrap: wrap;
+         justify-content: flex-start;
+         &__item {
+            justify-content: flex-start;
+            flex-basis: 49%;
+         }
+      }
+      .search {
+         &_input {
+            margin-right: 30px;
+         }
+      }
+      .nav {
+         &__item {
+            margin: 0 10px;
+         }
+      }
+   }
+   .promo {
+      &__filter {
+         min-width: 560px;
+      }
+   }
+   .footer {
+      &__inner {
+         flex-direction: column;
+         flex-wrap: wrap;
+         max-height: 350px;
+      }
+      &__info {
+         order: 1;
+         padding-right: 20px;
+      }
+      &__contacts {
+         margin-top: 20px;
+         order: 2;
+         &_title {
+            display: block;
+         }
+      }
+      &__seller {
+         order: 3;
+      }
+      &__map {
+         order: 4;
+         width: 246px;
+         height: 276px;
+      }
+   }
+   .about {
+      &__inner {
+         max-height: unset;
+         align-content: center;
+      }
+   }
+   .textblock {
+      width: 524px;
+   }
+   .card-page {
+      &__side {
+         flex-wrap: wrap;
+      }
+      &__photos {
+         &_img {
+            width: 80px;
+            height: 80px;
+         }
+         &_wrapper {
+            justify-content: center;
+            gap: 10px 10px;
+            grid-template-columns: repeat(auto-fill,80px);
+         }
+      }
+      &__buttons {
+         margin-top: 34px;
+         margin-left: 0;
+         flex-direction: row;
+         flex-wrap: wrap;
+         justify-content: space-between;
+         flex-basis: 100%;
+      }
+      &__button {
+         width: 48%;
+         &-addtocart {
+            margin-top: 0;
+            order: 2;
+         }
+         &-price {
+            margin-top: 0;
+            order: 3;
+         }
+      }
+      &__social {
+         margin-top: 0;
+         margin-left: 52%;
+         width: 48%;
+         order: 1;
+      }
+      &__available {
+         top: -40px;
+      }
+   }
+}
+
+@media (max-width: 767px) {
+   .header {
+      padding-left: 205px;
+      height: 142px;
+      &:after {
+         content: '';
+         background: #121212;
+         bottom: 0;
+         left: 0;
+         z-index: 0;
+         display: block;
+         width: 100%;
+         height: 52px;
+         position: absolute;
+      }
+      &__hamburger {
+         display: flex;
+         position: absolute;
+         top: 50px;
+         left: 10px;
+      }
+      .contacts {
+         position: fixed;
+         top: 50%;
+         transform: translateY(-50%);
+         left: -100%;
+         width: 100%;
+         background: #000;
+         padding: 20px;
+         z-index: 9;
+         transition: all .5s ease-in;
+         &__close {
+            display: block;
+         }
+         &-active {
+            left: 0;
+         }
+      }
+      &__main {
+         justify-content: flex-end;
+         .logo {
+            left: 60px;
+         }
+         .account {
+            width: 50%;
+         }
+         .contacts_button {
+            display: block;
+         }
+      }
+      .search {
+         margin-top: 5px;
+         z-index: 1;
+         flex-wrap: wrap;
+         &_input {
+            z-index: inherit;
+            margin-right: 0;
+         }
+         &_button {
+            margin-top: 7px;
+            z-index: inherit;
+            width: 100%;
+         }
+      }
+      .nav {
+         position: fixed;
+         flex-direction: column;
+         top: 0;
+         left: -250px;
+         height: 100vh;
+         width: 250px;
+         z-index: 2;
+         background-color: rgba($color: #121212, $alpha: 0.9);
+         transition: all .7s ease-in;
+         &-active {
+            left: 0px;
+         }
+      }
+   }
+   .promo {
+      background: url(../img/main-bg.jpg) left -470px center/cover no-repeat;
+      &__title {
+         font-size: 24px;
+      }
+      &__subtitle {
+         font-size: 36px;
+      }
+      &__descr {
+         font-size: 18px;
+      }
+      &__address {
+         font-size: 16px;
+      }
+      &__filter {
+         flex-direction: column;
+         min-width: 230px;
+         min-height: 170px;
+      }
+      &__dropdown {
+         &:not(:last-child)::after {
+            width: 100%;
+            right: 0;
+            bottom: -3px;
+            height: 1px;
+         }
+      }
+   }
+   .advantages {
+      flex-wrap: wrap;
+      height: 230px;
+      position: relative;
+      &:after {
+         content: '';
+         display: block;
+         position: absolute;
+         width: 80%;
+         height: 1px;
+         left: 50%;
+         top: 50%;
+         transform: translate(-50%, -50%);
+         background: #fff;
+      }
+      &__item {
+         flex-direction: column;
+         flex-basis: 50%;
+         &_text {
+            margin-left: 0;
+            margin-top: 10px;
+            font-size: 16px;
+         }
+         &:not(:last-child):after {
+            height: 60px;
+            top: 20px;
+         }
+         &:nth-child(2):after {
+            display: none;
+         }
+      }
+   }
+   .catalog {
+      &__wrapper {
+         grid-template-columns: repeat(auto-fill,242px);
+         justify-content: center;
+      }
+   }
+   .footer {
+      &__inner {
+         min-height: 550px;
+         padding-bottom: 230px;
+         flex-direction: column;
+         align-items: flex-start;
+         position: relative;
+      }
+      &__info {
+         flex-basis: 49%;
+         order: 1;
+      }
+      &__seller {
+         flex-basis: 49%;
+         order: 3;
+      }
+      &__contacts {
+         flex-basis: 49%;
+         order: 2;
+      }
+      &__map {
+         position: absolute;
+         width: 440px;
+         height: 200px;
+         bottom: 0;
+         left: 50%;
+         transform: translateX(-50%);
+      }
+   }
+   .textblock {
+      max-width: 100%;
+   }
+   .card-page {
+      &__main {
+         flex-wrap: wrap;
+      }
+      &__side {
+         margin-left: 0;
+         margin-top: 30px;
+      }
+      &__photos {
+         margin: 0 auto;
+         &_wrapper {
+            grid-template-columns: repeat(auto-fill,100px);
+         }
+         &_img {
+            width: 100px;
+            height: 100px;
+         }
+      }
+      &__social {
+         order: 3;
+         margin: 30px auto 0;
+         width: 200px;
+      }
+   }
+}
+
+@media (max-width: 479px) {
+   .header {
+      height: 233px;
+      padding-left: 0;
+      &__hamburger {
+         position: relative;
+         top: 0;
+         left: 0;
+      }
+      &__main {
+         width: 100%;
+         justify-content: space-between;
+         .account {
+            margin-left: 0;
+            width: unset;
+            flex-grow: 1;
+         }
+         .logo {
+            position: relative;
+            width: 88px;
+            left: 0;
+            top: 0;
+            transform: none;
+            flex-shrink: 0;
+
+         }
+         .contacts_button {
+            display: none;
+         }
+      }
+      .search {
+         margin-top: 10px;
+         .contacts_button {
+            margin-bottom: 7px;
+            margin-left: 0;
+            display: block;
+            width: 100%;
+            z-index: inherit;
+         }
+      }
+   }
+   .promo {
+      background: url(../img/main-bg.jpg) left -600px center/cover no-repeat;
+      &__title {
+         font-size: 18px;
+      }
+      &__subtitle {
+         font-size: 36px;
+      }
+      &__address {
+         font-size: 14px;
+      }
+      &__filter {
+         width: 230px;
+         height: 170px;
+      }
+      &__dropdown {
+         &_input {
+            &::placeholder {
+               font-size: 14px;
+            }
+         }
+      }
+      &__button {
+         margin-left: 20px;
+      }
+   }
+   .advantages {
+      &__item {
+         padding: 10px;
+         &_text {
+            font-size: 14px;
+         }
+      }
+   }
+   .catalog {
+      &__pages {
+         &_inner {
+            max-width: 100%;
+         }
+      }
+   }
+   .footer {
+      &__inner {
+         min-height: 880px;
+      }
+      &__seller {
+         margin-top: 20px;
+      }
+      &__map {
+         width: 100%;
+      }
+   }
+   .textblock {
+      padding: 24px 15px;
+   }
+   .contacts__block_icon {
+      &-a1 {
+         margin-right: 20px;
+      }
+      &-mts {
+         margin-right: 5px;
+      }
+      &-viber {
+         margin-right: 20px;
+      }
+   }
+   .card-page {
+      &__photos {
+         max-width: 100%;
+         &_wrapper {
+            grid-template-columns: repeat(auto-fill,75px);
+         }
+         &_img {
+            width: 80px;
+            height: 80px;
+         }
+      }
+   }
+}

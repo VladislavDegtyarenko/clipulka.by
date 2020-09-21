@@ -1,0 +1,252 @@
+.header {
+   position: relative;
+   height: 144px;
+   background: $grey;
+   color: #fff;
+   padding-left: 241px;
+   padding-top: 12px;
+   padding-right: 64px;
+
+   &__main {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .logo {
+         position: absolute;
+         top: 50%;
+         left: 83px;
+         z-index: 1;
+         transform: translateY(-50%);
+         transition: filter .2s linear;
+         @include hover-effect;
+         @include img-fit;
+      }
+   }
+
+   &__hamburger {
+      width: 36px;
+      height: 36px;
+      @include flex-center;
+      display: none;
+      background: none;
+      border: none;
+      margin-right: 10px;
+      z-index: 3;
+      &:focus, &:active {
+         outline: none
+      }
+      &-open {
+         .header__hamburger_inner span:nth-child(1) {
+            top: 7px;
+            transform: rotate(135deg);
+         }
+         .header__hamburger_inner span:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+         }
+         .header__hamburger_inner span:nth-child(3) {
+            top: 7px;
+            transform: rotate(-135deg);
+         }
+      } /* open */
+      &_inner {
+         width: 24px;
+         height: 18px;
+         position: relative;
+         transform: rotate(0deg);
+         cursor: pointer;
+         flex-shrink: 0;
+         span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: #fff;
+            border-radius: 0px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .5s ease-in-out;
+            &:nth-child(1) {
+               top: 0px
+            }
+            &:nth-child(2) {
+               top: 14px
+            }
+            &:nth-child(3) {
+               top: 7px
+            }
+         } /* span */
+      } /* inner */
+   } /* hamburger */
+
+   .contacts {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 707px;
+      position: relative;
+
+      &__item {
+         @include flex-center;
+         @include pressing-effect;
+         height: 32px;
+         letter-spacing: 0.625px;
+         color: #fff;
+
+         &_text {
+            margin-left: 7px;
+            font-weight: 400;
+         }
+      }
+
+      &__close {
+         display: none;
+         position: absolute;
+         font-size: 32px;
+         top: 10px;
+         right: 10px;
+         padding: 0 10px;
+         line-height: 100%;
+      }
+   }
+
+   .account {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-shrink: 0;
+      width: 225px;
+      margin-left: 25px;
+
+      .login {
+         @include flex-center;
+         @include pressing-effect;
+         justify-content: flex-start;
+         flex-grow: 1;
+         height: 32px;
+         display: none;
+
+         &_text {
+            margin-left: 7px;
+            color: #fff;
+         }
+      }
+
+      .iconCounter {
+         @include flex-center;
+         color: #fff;
+         margin-left: 10px;
+         position: relative;
+         width: 32px;
+         height: 32px;
+         @include pressing-effect;
+         @include hover-effect;
+
+         .counter {
+            position: absolute;
+            color: $yellow;
+            top: 0;
+            right: 0;
+         }
+      }
+   }
+
+   .contacts_button {
+      display: none;
+      padding: 6px 24px;
+      margin-left: 15px;
+   }
+
+   .search {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 4px;
+
+      &_input {
+         padding: 6px 10px;
+         border-radius: 2px;
+         border: none;
+         flex-grow: 1;
+         margin-right: 40px;
+         background-image: url('../icons/search.svg');
+         background-position: top 6px right 10px;
+         background-repeat: no-repeat;
+
+         &:focus {
+            outline: none;
+         }
+      }
+
+      &_button {
+         padding: 6px 26px;
+         font-size: 13px;
+         line-height: 19px;
+         color: $black;
+
+         &:focus {
+            outline: none
+         }
+
+         &:hover {
+            filter: brightness(1.15);
+         }
+      }
+
+      .contacts_button {
+         display: none;
+         padding: 6px 24px;
+         margin-left: 15px;
+      }
+   }
+
+   .nav {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 48px;
+      width: 100%;
+      background-color: $black;
+      @include flex-center;
+
+      &__item {
+         margin: 0px 40px;
+         text-transform: uppercase;
+         padding: 5px 0;
+         @include pressing-effect;
+
+         &:after {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            bottom: 5px;
+            left: 0;
+            opacity: 0;
+            transition: all .2s linear;
+         }
+
+         &:hover:after {
+            opacity: 1;
+         }
+      }
+   }
+   .overlay {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      bottom: 0;
+      background: rgba(0,0,0,.65);
+      z-index: 1;
+      transition: all .7s ease-in;
+      &-active {
+         left: 0;
+      }
+   }
+   #contactsOverlay {
+      z-index: 3;
+   }
+}

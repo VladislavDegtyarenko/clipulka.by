@@ -1,0 +1,14 @@
+.about {
+   padding: 48px 0;
+   &__inner {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      max-height: 1200px;
+   }
+   &__block {
+      &:nth-child(5) {
+         margin-top: 50px;
+      }
+   }
+}

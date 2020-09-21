@@ -1,0 +1,27 @@
+.advantages {
+   display: flex;
+   justify-content: space-between;
+   background: $grey;
+   padding: 12px 110px;
+   &__item {
+      @include flex-center;
+      text-align: center;
+      position: relative;
+      flex-grow: 1;
+      &_text {
+         margin-left: 10px;
+         color: #fff;
+         line-height: 100%;
+      }
+      &:not(:last-child):after {
+         content: '';
+         display: block;
+         position: absolute;
+         width: 1px;
+         right: 0;
+         top: -1px;
+         height: 30px;
+         background: #fff;
+      }
+   }
+}

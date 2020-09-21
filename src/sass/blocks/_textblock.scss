@@ -1,0 +1,41 @@
+.textblock {
+   padding: 34px 32px;
+   font-size: 16px;
+   line-height: 140%;
+   letter-spacing: 0.625px;
+   width: 45%;
+   margin-bottom: 48px;
+   color: #000;
+   &-main {
+      background: $text-block1;
+   }
+   &-alt {
+      background: $text-block2;
+   }
+   &-blank {
+      padding: 0;
+   }
+   h2, h3 {
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
+      margin-bottom: 30px;
+   }
+   a {
+      color: $blue
+   }
+   span {
+      color: $red;
+   }
+   table {
+      td, th {
+         vertical-align: top;
+         padding-bottom: 20px;
+      }
+      th {
+         width: 160px;
+      }
+   }
+   
+}

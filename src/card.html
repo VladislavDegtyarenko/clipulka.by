@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/style.min.css">
+   <title>Document</title>
+</head>
+
+<body>
+   @@include('./html-parts/_header.html')
+
+   <section class="card-page">
+      <div class="container">
+         <div class="card-page__breadcrumbs">
+            <div class="card-page__breadcrumbs_link">Главная</div>
+            <div class="card-page__breadcrumbs_link">Каталог</div>
+            <div class="card-page__breadcrumbs_link">Клипсы автомобилей BMW</div>
+         </div>
+         <div class="card-page__main">
+            <div class="card-page__photos">
+               <div class="card-page__photos_big">
+                  <img src="" alt="">
+               </div>
+               <div class="card-page__photos_wrapper">
+                  <div class="card-page__photos_img ">
+                     <img src="img/catalog/1.jpg" alt="">
+                  </div>
+                  <div class="card-page__photos_img jsActiveImage">
+                     <img src="img/catalog/2.jpg" alt="">
+                  </div>
+                  <div class="card-page__photos_img">
+                     <img src="img/catalog/5.jpg" alt="">
+                  </div>
+                  <div class="card-page__photos_img">
+                     <img src="img/catalog/7.jpg" alt="">
+                  </div>
+               </div>
+            </div>
+            <div class="card-page__side">
+               <div class="card-page__info">
+                  <h2 class="card-page__info_heading">Клипсы автомобильные BMW</h2>
+                  <div class="card-page__info_wrapper">
+                     <table>
+                        <tr>
+                           <th class="card-page__info_property">Clipulka # </th>
+                           <td class="card-page__info_value">D57</td>
+                        </tr>
+                        <tr>
+                           <th class="card-page__info_property">Количество</th>
+                           <td class="card-page__info_value">
+                              <form class="card-page__info_counter" action="/action_page.php">
+                                 <input type="number" id="points" name="points" value="1" step="1" min="1">
+                              </form>
+                           </td>
+                        </tr>
+                        <tr>
+                           <th class="card-page__info_property">Марка автомобиля</th>
+                           <td class="card-page__info_value">BMW</td>
+                        </tr>
+                        <tr>
+                           <th class="card-page__info_property">Модель автомобиля</th>
+                           <td class="card-page__info_value">! Универсальные</td>
+                        </tr>
+                        <tr>
+                           <th class="card-page__info_property">Место установки</th>
+                           <td class="card-page__info_value">Втулка резиновая</td>
+                        </tr>
+                     </table>
+                  </div>
+                  <div class="card-page__info_title">Описание</div>
+                  <div class="card-page__info_text">Втулка резиновая BMW - многофункциональная (D=8.8mm)</div>
+               </div> <!-- info -->
+               <div class="card-page__buttons">
+                  <button class="button card-page__button card-page__button-addtocart">
+                     <img src="icons/cart.svg" alt="">
+                     в корзину
+                  </button>
+                  <button class="button card-page__button card-page__button-price">
+                     <img src="icons/question.svg" alt="">
+                     узнать цену
+                  </button>
+                  <div class="card-page__social">
+                     <a href="#" class="button card-page__social_item">
+                        <img src="icons/social/facebook.svg" alt="">
+                     </a>
+                     <a href="viber://chat?number=375291457774" class="button card-page__social_item">
+                        <img src="icons/social/viber.svg" alt="">
+                     </a>
+                     <a href="#" class="button card-page__social_item">
+                        <img src="icons/social/whatsapp.svg" alt="">
+                     </a>
+                     <a href="#" class="button card-page__social_item">
+                        <img src="icons/social/skype.svg" alt="">
+                     </a>
+                     <a href="#" class="button card-page__social_item">
+                        <img src="icons/social/telegram.svg" alt="">
+                     </a>
+                  </div>
+               </div> <!-- buttons -->
+            </div> <!-- side -->
+            <div class="card-page__available show">
+               есть в наличии
+            </div>
+         </div> <!-- main -->
+
+      </div>
+   </section>
+
+   @@include('./html-parts/_footer.html')
+
+
+   <script src="js/script.js"></script>
+</body>
+
+</html>

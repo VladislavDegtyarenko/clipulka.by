@@ -1,0 +1,61 @@
+@import 'libs/bootstrap-reboot.min';
+@import 'base/fonts';
+@import 'base/variables';
+@import 'base/mixins';
+
+body {
+   margin: 0 auto;
+   font-family: Gilroy;
+   font-size: 14px;
+   min-width: 320px;
+}
+
+.container {
+   max-width: 1152px;
+   margin: 0 auto;
+}
+
+a {
+   color: inherit;
+   position: relative;
+   &:hover {
+      text-decoration: none;
+      color: inherit;
+   }   
+}
+
+input {
+   &:focus {
+      outline: none;
+   }
+}
+
+h1, h2, h3, h4, h5, h6, address {
+   margin-bottom: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+}
+
+iframe {
+   width: 100%;
+   height: 100%;
+}
+
+@import 'blocks/buttons';
+@import 'blocks/textblock';
+@import 'blocks/header';
+@import 'blocks/promo';
+@import 'blocks/advantages';
+@import 'blocks/catalog';
+@import 'blocks/new';
+@import 'blocks/footer';
+@import 'blocks/copyright';
+@import 'blocks/card-page';
+@import 'blocks/about';
+@import 'blocks/contacts';
+@import 'blocks/send';
+@import 'blocks/how';
+@import 'base/media';

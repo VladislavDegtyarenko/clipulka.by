@@ -1,0 +1,42 @@
+.new {
+   min-height: 464px;
+   padding-bottom: 48px;
+
+   &__title {
+      background: $yellow;
+      margin-bottom: 48px;
+      font-size: 24px;
+      line-height: 46px;
+      font-weight: 400;
+      text-align: center;
+      color: $black;
+      text-transform: uppercase;
+   }
+
+   &__controls {
+      display: flex;
+      justify-content: flex-end;
+      &_button {
+         width: 32px;
+         height: 32px;
+         margin-left: 16px;
+         @include pressing-effect-deep;
+         &-left {
+            background: #F8E541 url('../../icons/triangle-left.svg') center center no-repeat;
+            background-size: 16px 20px;
+            transition: filter .2s linear;
+            &:hover {
+               filter: brightness(1.15);
+            }
+         }
+         &-right {
+            background: #F8E541 url('../../icons/triangle-right.svg') center center no-repeat;
+            background-size: 16px 20px;
+            transition: filter .2s linear;
+            &:hover {
+               filter: brightness(1.15);
+            }
+         }
+      }
+   }
+}

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.min.css">
+	<title>Document</title>
+</head>
+
+<body>
+	@@include('./html-parts/_header.html')
+
+
+	<section class="promo">
+		<h1 class="promo__title">детали стеклоподъемника</h1>
+		<h2 class="promo__subtitle">автокрепеж</h2>
+		<h3 class="promo__descr">Более 5000 наименований
+			автокрепежа в наличии</h3>
+		<address class="promo__address">
+			<img src="icons/pin.svg" alt="pin">
+			Минск, Авторынок “Малиновка”
+		</address>
+
+		<div class="promo__main">
+			<div class="promo__filter">
+				<div class="promo__dropdown">
+					<input type="text" value="" placeholder="Марка автомобиля" id="myInput" class="promo__dropdown_input"
+						onkeyup="filterFunction()">
+					<div class="promo__dropdown_menu">
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">BMW</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Ford</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Honda</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Hyundai</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Mercedes-Benz</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Mustang</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Nissan</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Porsche</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Tesla</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Toyota</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Volkswagen</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Москвич</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Лада</a>
+					</div>
+				</div> <!-- promo__dropdown -->
+				<div class="promo__dropdown">
+					<input type="text" value="" placeholder="Модель автомобиля" class="promo__dropdown_input"
+						onkeyup="filterFunction()">
+					<div class="promo__dropdown_menu">
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">BMW</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Ford</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Honda</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Hyundai</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Mercedes-Benz</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Mustang</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Nissan</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Porsche</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Tesla</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Toyota</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Volkswagen</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Москвич</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Лада</a>
+					</div>
+				</div> <!-- promo__dropdown -->
+				<div class="promo__dropdown">
+					<input type="text" value="" placeholder="Место установки" class="promo__dropdown_input"
+						onkeyup="filterFunction()">
+					<div class="promo__dropdown_menu">
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">BMW</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Ford</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Honda</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Hyundai</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Mercedes-Benz</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Mustang</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Nissan</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Porsche</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Tesla</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Toyota</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Volkswagen</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Москвич</a>
+						<a onclick="event.preventDefault(); selectFromList(this)" class="promo__dropdown_item"
+							href="#">Лада</a>
+					</div>
+				</div> <!-- promo__dropdown -->
+			</div>
+
+			<button class="button promo__button"></button>
+		</div>
+	</section>
+
+	<div class="advantages">
+		<div class="advantages__item">
+			<img class="advantages__item_icon" src="icons/photo-camera.svg" alt="a1-logo">
+			<span class="advantages__item_text">Наглядные фото</span>
+		</div>
+		<div class="advantages__item">
+			<img class="advantages__item_icon" src="icons/price.svg" alt="price">
+			<span class="advantages__item_text">Лучшая цена</span>
+		</div>
+		<div class="advantages__item">
+			<img class="advantages__item_icon" src="icons/shipping.svg" alt="shipping">
+			<span class="advantages__item_text">Доставка</span>
+		</div>
+		<div class="advantages__item">
+			<img class="advantages__item_icon" src="icons/notes.svg" alt="notes">
+			<span class="advantages__item_text">Автокрепеж под заказ</span>
+		</div>
+	</div>
+
+	<section class="catalog">
+		<div class="container">
+			<div class="catalog__counter">
+				Показано
+				с <span class="catalog__counter-first">1</span>
+				по <span class="catalog__counter-first">16</span>
+				из <span class="catalog__counter-allcards">9820</span>
+				(всего <span class="catalog__counter-allpages">614</span> страниц)
+			</div>
+			<div class="catalog__wrapper">
+				<div class="catalog__card">
+					<a href="card.html" class="catalog__card_link"></a>
+					<button class="catalog__card_like"></button>
+					<div class="catalog__card_label catalog__card_label-new">новинка</div>
+					<div class="catalog__card_label catalog__card_label-popular">популярно</div>
+					<div class="catalog__card_img">
+						<img src="img/catalog/1.jpg" alt="">
+					</div>
+					<div class="catalog__card_text">
+						<h4 class="catalog__card_descr">Вставки крепления листвы порога, боковых молдингов, расширений арок
+							Nissan - J353</h4>
+						<div class="catalog__card_available">в наличии</div>
+					</div>
+					<div class="catalog__card_buttons">
+						<button class="catalog__card_minus"></button>
+						<div class="catalog__card_counter">1</div>
+						<button class="catalog__card_plus"></button>
+						<button class="catalog__card_cart"></button>
+					</div>
+				</div> <!-- card -->
+				<div class="catalog__card">
+					<a href="card.html" class="catalog__card_link"></a>
+					<button class="catalog__card_like"></button>
+					<div class="catalog__card_label catalog__card_label-new show">новинка</div>
+					<div class="catalog__card_label catalog__card_label-popular">популярно</div>
+					<div class="catalog__card_img">
+						<img src="img/catalog/2.jpg" alt="">
+					</div>
+					<div class="catalog__card_text">
+						<h4 class="catalog__card_descr">Вставки крепления листвы порога, боковых молдингов, расширений арок
+							Nissan - J353</h4>
+						<div class="catalog__card_available">в наличии</div>
+					</div>
+					<div class="catalog__card_buttons">
+						<button class="catalog__card_minus"></button>
+						<div class="catalog__card_counter">1</div>
+						<button class="catalog__card_plus"></button>
+						<button class="catalog__card_cart"></button>
+					</div>
+				</div> <!-- card -->
+				<div class="catalog__card">
+					<a href="card.html" class="catalog__card_link"></a>
+					<button class="catalog__card_like"></button>
+					<div class="catalog__card_label catalog__card_label-new">новинка</div>
+					<div class="catalog__card_label catalog__card_label-popular show">популярно</div>
+					<div class="catalog__card_img">
+						<img src="img/catalog/3.jpg" alt="">
+					</div>
+					<div class="catalog__card_text">
+						<h4 class="catalog__card_descr">Вставки крепления листвы порога, боковых молдингов, расширений арок
+							Nissan - J353</h4>
+						<div class="catalog__card_available">в наличии</div>
+					</div>
+					<div class="catalog__card_buttons">
+						<button class="catalog__card_minus"></button>
+						<div class="catalog__card_counter">1</div>
+						<button class="catalog__card_plus"></button>
+						<button class="catalog__card_cart"></button>
+					</div>
+				</div> <!-- card -->
+				<div class="catalog__card">
+					<a href="card.html" class="catalog__card_link"></a>
+					<button class="catalog__card_like"></button>
+					<div class="catalog__card_label catalog__card_label-new">новинка</div>
+					<div class="catalog__card_label catalog__card_label-popular">популярно</div>
+					<div class="catalog__card_img">
+						<img src="img/catalog/3.jpg" alt="">
+					</div>
+					<div class="catalog__card_text">
+						<h4 class="catalog__card_descr">Вставки крепления листвы порога, боковых молдингов, расширений арок
+							Nissan - J353</h4>
+						<div class="catalog__card_available">в наличии</div>
+					</div>
+					<div class="catalog__card_buttons">
+						<button class="catalog__card_minus"></button>
+						<div class="catalog__card_counter">1</div>
+						<button class="catalog__card_plus"></button>
+						<button class="catalog__card_cart"></button>
+					</div>
+				</div> <!-- card -->
+				<div class="catalog__card">
+					<a href="card.html" class="catalog__card_link"></a>
+					<button class="catalog__card_like"></button>
+					<div class="catalog__card_label catalog__card_label-new">новинка</div>
+					<div class="catalog__card_label catalog__card_label-popular">популярно</div>
+					<div class="catalog__card_img">
+						<img src="img/catalog/5.jpg" alt="">
+					</div>
+					<div class="catalog__card_text">
+						<h4 class="catalog__card_descr">Вставки крепления листвы порога, боковых молдингов, расширений арок
+							Nissan - J353</h4>
+						<div class="catalog__card_available">в наличии</div>
+					</div>
+					<div class="catalog__card_buttons">
+						<button class="catalog__card_minus"></button>
+						<div class="catalog__card_counter">1</div>
+						<button class="catalog__card_plus"></button>
+						<button class="catalog__card_cart"></button>
+					</div>
+				</div> <!-- card -->
+				<div class="catalog__card">
+					<a href="card.html" class="catalog__card_link"></a>
+					<button class="catalog__card_like"></button>
+					<div class="catalog__card_label catalog__card_label-new">новинка</div>
+					<div class="catalog__card_label catalog__card_label-popular">популярно</div>
+					<div class="catalog__card_img">
+						<img src="img/catalog/6.jpg" alt="">
+					</div>
+					<div class="catalog__card_text">
+						<h4 class="catalog__card_descr">Вставки крепления листвы порога, боковых молдингов, расширений арок
+							Nissan - J353</h4>
+						<div class="catalog__card_available">в наличии</div>
+					</div>
+					<div class="catalog__card_buttons">
+						<button class="catalog__card_minus"></button>
+						<div class="catalog__card_counter">1</div>
+						<button class="catalog__card_plus"></button>
+						<button class="catalog__card_cart"></button>
+					</div>
+				</div> <!-- card -->
+				<div class="catalog__card">
+					<a href="card.html" class="catalog__card_link"></a>
+					<button class="catalog__card_like"></button>
+					<div class="catalog__card_label catalog__card_label-new">новинка</div>
+					<div class="catalog__card_label catalog__card_label-popular">популярно</div>
+					<div class="catalog__card_img">
+						<img src="img/catalog/7.jpg" alt="">
+					</div>
+					<div class="catalog__card_text">
+						<h4 class="catalog__card_descr">Вставки крепления листвы порога, боковых молдингов, расширений арок
+							Nissan - J353</h4>
+						<div class="catalog__card_available">в наличии</div>
+					</div>
+					<div class="catalog__card_buttons">
+						<button class="catalog__card_minus"></button>
+						<div class="catalog__card_counter">1</div>
+						<button class="catalog__card_plus"></button>
+						<button class="catalog__card_cart"></button>
+					</div>
+				</div> <!-- card -->
+
+			</div> <!-- wrapper -->
+			<div class="catalog__pages">
+				<div class="catalog__pages_inner">
+					<a class="catalog__pages_num" href="#">|&lt;</a>
+					<a class="catalog__pages_num" href="#">&lt;</a>
+					<a class="catalog__pages_num active" href="#">1</a>
+					<a class="catalog__pages_num" href="#">2</a>
+					<a class="catalog__pages_num" href="#">3</a>
+					<a class="catalog__pages_num" href="#">4</a>
+					<a class="catalog__pages_num" href="#">5</a>
+					<a class="catalog__pages_num" href="#">6</a>
+					<a class="catalog__pages_num" href="#">7</a>
+					<a class="catalog__pages_num" href="#">8</a>
+					<a class="catalog__pages_num" href="#">9</a>
+					<a class="catalog__pages_num" href="#">&gt;</a>
+					<a class="catalog__pages_num" href="#">&gt;|</a>
+				</div>
+			</div>
+		</div> <!-- container -->
+	</section>
+
+	<section class="new">
+		<h4 class="new__title">новинки</h4>
+		<div class="container">
+			<div class="catalog__wrapper">
+				<div class="catalog__card">
+					<a href="card.html" class="catalog__card_link"></a>
+					<button class="catalog__card_like"></button>
+					<div class="catalog__card_label catalog__card_label-new">новинка</div>
+					<div class="catalog__card_label catalog__card_label-popular">популярно</div>
+					<div class="catalog__card_img">
+						<img src="img/catalog/7.jpg" alt="">
+					</div>
+					<div class="catalog__card_text">
+						<h4 class="catalog__card_descr">Вставки крепления листвы порога, боковых молдингов, расширений арок
+							Nissan - J353</h4>
+						<div class="catalog__card_available">в наличии</div>
+					</div>
+					<div class="catalog__card_buttons">
+						<button class="catalog__card_minus"></button>
+						<div class="catalog__card_counter">1</div>
+						<button class="catalog__card_plus"></button>
+						<button class="catalog__card_cart"></button>
+					</div>
+				</div> <!-- card -->
+				<div class="catalog__card">
+					<a href="card.html" class="catalog__card_link"></a>
+					<button class="catalog__card_like"></button>
+					<div class="catalog__card_label catalog__card_label-new">новинка</div>
+					<div class="catalog__card_label catalog__card_label-popular">популярно</div>
+					<div class="catalog__card_img">
+						<img src="img/catalog/7.jpg" alt="">
+					</div>
+					<div class="catalog__card_text">
+						<h4 class="catalog__card_descr">Вставки крепления листвы порога, боковых молдингов, расширений арок
+							Nissan - J353</h4>
+						<div class="catalog__card_available">в наличии</div>
+					</div>
+					<div class="catalog__card_buttons">
+						<button class="catalog__card_minus"></button>
+						<div class="catalog__card_counter">1</div>
+						<button class="catalog__card_plus"></button>
+						<button class="catalog__card_cart"></button>
+					</div>
+				</div> <!-- card -->
+				<div class="catalog__card">
+					<a href="card.html" class="catalog__card_link"></a>
+					<button class="catalog__card_like"></button>
+					<div class="catalog__card_label catalog__card_label-new">новинка</div>
+					<div class="catalog__card_label catalog__card_label-popular">популярно</div>
+					<div class="catalog__card_img">
+						<img src="img/catalog/7.jpg" alt="">
+					</div>
+					<div class="catalog__card_text">
+						<h4 class="catalog__card_descr">Вставки крепления листвы порога, боковых молдингов, расширений арок
+							Nissan - J353</h4>
+						<div class="catalog__card_available">в наличии</div>
+					</div>
+					<div class="catalog__card_buttons">
+						<button class="catalog__card_minus"></button>
+						<div class="catalog__card_counter">1</div>
+						<button class="catalog__card_plus"></button>
+						<button class="catalog__card_cart"></button>
+					</div>
+				</div> <!-- card -->
+				<div class="catalog__card">
+					<a href="card.html" class="catalog__card_link"></a>
+					<button class="catalog__card_like"></button>
+					<div class="catalog__card_label catalog__card_label-new">новинка</div>
+					<div class="catalog__card_label catalog__card_label-popular">популярно</div>
+					<div class="catalog__card_img">
+						<img src="img/catalog/7.jpg" alt="">
+					</div>
+					<div class="catalog__card_text">
+						<h4 class="catalog__card_descr">Вставки крепления листвы порога, боковых молдингов, расширений арок
+							Nissan - J353</h4>
+						<div class="catalog__card_available">в наличии</div>
+					</div>
+					<div class="catalog__card_buttons">
+						<button class="catalog__card_minus"></button>
+						<div class="catalog__card_counter">1</div>
+						<button class="catalog__card_plus"></button>
+						<button class="catalog__card_cart"></button>
+					</div>
+				</div> <!-- card -->
+			</div> <!-- wrapper -->
+			<div class="new__controls">
+				<button class="button new__controls_button new__controls_button-left"></button>
+				<button class="button new__controls_button new__controls_button-right"></button>
+			</div>
+		</div>
+	</section>
+
+	@@include('./html-parts/_footer.html')
+
+	<script src="js/script.js"></script>
+</body>
+
+</html>

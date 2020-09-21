@@ -1,0 +1,170 @@
+.catalog {
+   padding: 50px 0;
+   &__counter {
+      text-align: right;
+   }
+   &__wrapper {
+      /* display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap; */
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 232px);
+      justify-content: space-between;
+      margin-top: 10px;
+      &::after {
+         content: "";
+         flex: auto;
+       }
+   }
+   &__card {
+      width: 232px;
+      margin-bottom: 30px;
+      background: #fff;
+      box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+      @include hover-zoom-effect;
+      &_link {
+         position: absolute;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 36px;
+         z-index: 1;
+      }
+      &_like {
+         position: absolute;
+         top: 8px;
+         right: 18px;
+         width: 24px;
+         height: 24px;
+         background: url('../../icons/favorite.svg') center center no-repeat;
+         border: none;
+         transition: background .2s linear;
+         &:hover, &:focus {
+            background: url('../../icons/favorite-red.svg') center center no-repeat;
+            outline: none;
+         }
+         z-index: 2;
+      }
+      &_label {
+         position: absolute;
+         display: none;
+         left: 0px;
+         top: 0px;
+         width: 95px;
+         height: 22px;
+         border-radius: 5px 0px;
+         text-align: center;
+         line-height: 22px;
+         z-index: 2;
+         &-new {
+            background: #F8E541;
+         }
+         &-popular {
+            background: #FF8C21;
+         }
+      }
+      
+      &_img {
+         width: 100%;
+         height: 141px;
+         img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+         }
+      }
+      &_text {
+         padding: 3px 20px 18px;
+         position: relative;
+      }
+      &_descr {
+         font-size: 14px;
+         font-weight: 400;
+         line-height: 110%;
+         letter-spacing: 0.625px;
+      }
+      &_available {
+         position: absolute;
+         bottom: 3px;
+         right: 18px;
+         font-size: 12px;
+         color: $black;
+         font-weight: 700;
+      }
+      &_buttons {
+         display: flex;
+         align-items: center;
+         padding-left: 85px;
+         padding-right: 20px;
+         background: $grey-alt;
+         min-height: 36px;
+      }
+      &_minus, &_plus {
+         border: none;
+         background: transparent;
+         width: 28px;
+         height: 32px;
+      }
+      &_minus {
+         background: url(../../icons/minus.svg) center center no-repeat;
+      }
+      &_plus {
+         background: url(../../icons/plus.svg) center center no-repeat;
+      }
+      &_counter {
+         width: 25px;
+         height: 20px;
+         line-height: 20px;
+         font-size: 18px;
+         background: #FFFFFF;
+         border-radius: 2px;
+         text-align: center;
+      }
+      &_cart {
+         border: none;
+         background: url('../../icons/cart-white.svg') center center no-repeat;
+         height: 36px;
+         width: 32px;
+         margin-left: 15px;
+      }
+   }
+   .show {
+      display: block;
+   }
+   &__pages {
+      @include flex-center;
+      margin-top: 14px;
+      &_inner {
+         display: flex;
+         border: 1px solid #A5A0A6;
+         border-radius: 2px;
+      }
+      &_num {
+         display: inline-block;
+         width: 33px;
+         height: 31px;
+         line-height: 31px;
+         text-align: center;
+         position: relative;
+         transition: background-color .2s linear;
+         &:not(:last-child):after{
+            content: '';
+            top: 0;
+            right: 0;
+            width: 1px;
+            height: 100%;
+            background-color: #A5A0A6;
+            position: absolute;
+         }
+         &:hover {
+            background-color: rgba($yellow, 0.5);
+         }
+      }
+   }
+   .active {
+      background-color: rgba($yellow, 1);
+   }
+}

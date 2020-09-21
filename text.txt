@@ -1,0 +1,18 @@
+colors
+$yellow #F8E541
+$orange #FF8C21
+$red #FF3333
+$grey #515152
+$grey-alt #A5A0A6
+$black #121212
+
+$text-block1 #D2D0D3
+$text-block2 #B8AC94
+
+
+@mixin base_text {
+   font-family: Gilroy
+   font-weight: 400
+   font-size: 14px
+   line-height: calc(100% + 4px)
+}
