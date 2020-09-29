@@ -1,3 +1,38 @@
+document.addEventListener('DOMContentLoaded', function () {
+
+  // splidejs
+  new Splide('.splide', {
+    perPage: 4,
+    perMove: 4,
+    rewindSpeed: 1500,
+    arrows: true,
+    rewind: true,
+    pagination: false,
+    lazyLoad: 'nearby',
+    classes: {
+      arrows: 'new__controls',
+      arrow: 'new__controls_button',
+      prev: 'new__controls_button-left',
+      next: 'new__controls_button-right',
+    },
+    breakpoints: {
+      991: {
+        perPage: 3,
+        perMove: 3
+      },
+      767: {
+        perPage: 2,
+        perMove: 2
+      },
+      480: {
+        perPage: 1,
+        perMove: 1
+      },
+    }
+  }).mount();
+});
+
+
 const hamburgerMenu = document.querySelector(".header__hamburger"),
   navMenu = document.querySelector(".nav"),
   navOverlay = document.querySelector("#navOverlay"),
@@ -7,32 +42,187 @@ const hamburgerMenu = document.querySelector(".header__hamburger"),
   contactsClose = document.querySelector(".contacts__close"),
   promoDropdownInput = document.querySelectorAll(".promo__dropdown_input"),
   promoDropdownMenu = document.querySelectorAll(".promo__dropdown_menu"),
-  promoDropdownItem = document.querySelectorAll(".promo__dropdown_item");
+  promoDropdownItem = document.querySelectorAll(".promo__dropdown_item"),
+  cartOpenButton = document.querySelector("#cartOpenButton"),
+  cart = document.querySelector(".cart"),
+  cartOverlay = document.querySelector("#cartOverlay"),
+  cartCloseButton = document.querySelector(".cart__close"),
+  cartGoToCatalogButton = document.querySelector("#goToCatalog"),
+  cartEmptyGoToCatalogButton = document.querySelector(".cart__empty"),
+  cartItems = document.querySelectorAll(".cart__item"),
+  cartContunueShoppingButton = document.querySelector("#cartContinueShopping"),
+  removeCartItemButtons = document.querySelectorAll(".cart__item_remove"),
+  whatsThePriceButton = document.querySelector('.card-page__button-price'),
+  whatsThePriceModal = document.querySelector(".whatsThePrice"),
+  whatsThePriceModalOverlay = document.querySelector("#whatsThePriceOverlay"),
+  whatsThePriceCloseModal = document.querySelector(".whatsThePrice__close"),
+  fadeTime = 700;
 
 
-// Prevent Body Scroll
-function bodyNoScroll() {
-  navMenu.classList.contains('nav-active') ?
-    document.body.style = "overflow-y:hidden; position: relative; margin-right: var(--widthReflow);" :
-    document.body.style = ""
+
+
+// Nav Active Links and Page Title on Mobile Screens
+
+var path = window.location.pathname;
+var page = path.split("/").pop();
+var pageTitleOnMobile = document.querySelector(".pagetitle");
+
+switch (page) {
+  case 'index.html': // если открыта страница index.html
+    var navItem = document.getElementById("index");
+    navItem.classList.add("nav__item-active");
+    pageTitleOnMobile.innerHTML = navItem.innerHTML;
+    break;
+  case 'how.html': // если открыта страница index.html
+    var navItem = document.getElementById("how");
+    navItem.classList.add("nav__item-active");
+    pageTitleOnMobile.innerHTML = navItem.innerHTML;
+    break;
+  case 'send.html': // если открыта страница index.html
+    var navItem = document.getElementById("send");
+    navItem.classList.add("nav__item-active");
+    pageTitleOnMobile.innerHTML = navItem.innerHTML;
+    break;
+  case 'contacts.html': // если открыта страница index.html
+    var navItem = document.getElementById("contacts");
+    navItem.classList.add("nav__item-active");
+    pageTitleOnMobile.innerHTML = navItem.innerHTML;
+    break;
+  case 'about.html': // если открыта страница index.html
+    var navItem = document.getElementById("about");
+    navItem.classList.add("nav__item-active");
+    pageTitleOnMobile.innerHTML = navItem.innerHTML;
+    break;
+  case 'order.html': // на странице оформления заказа
+    document.querySelector('.cartButton').style.display = 'none'; // скрываем корзину в шапке
+  default:
+    pageTitleOnMobile.innerHTML = "";
 }
 
 
+
+/* Disable Hover on Touch Devices */
+function hasTouch() {
+  return 'ontouchstart' in document.documentElement ||
+    navigator.maxTouchPoints > 0 ||
+    navigator.msMaxTouchPoints > 0;
+}
+
+if (hasTouch()) { // remove all the :hover stylesheets
+  try { // prevent exception on browsers not supporting DOM styleSheets properly
+    for (var si in document.styleSheets) {
+      var styleSheet = document.styleSheets[si];
+      if (!styleSheet.rules) continue;
+
+      for (var ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
+        if (!styleSheet.rules[ri].selectorText) continue;
+
+        if (styleSheet.rules[ri].selectorText.match(':hover')) {
+          styleSheet.deleteRule(ri);
+        }
+      }
+    }
+  } catch (ex) {}
+}
+
+
+
+/* Fade In & Out Function */
+(function () {
+  var FX = {
+    easing: {
+      linear: function (progress) {
+        return progress;
+      },
+      quadratic: function (progress) {
+        return Math.pow(progress, 2);
+      },
+      swing: function (progress) {
+        return 0.5 - Math.cos(progress * Math.PI) / 2;
+      },
+      circ: function (progress) {
+        return 1 - Math.sin(Math.acos(progress));
+      },
+      back: function (progress, x) {
+        return Math.pow(progress, 2) * ((x + 1) * progress - x);
+      },
+      bounce: function (progress) {
+        for (var a = 0, b = 1, result; 1; a += b, b /= 2) {
+          if (progress >= (7 - 4 * a) / 11) {
+            return -Math.pow((11 - 6 * a - 11 * progress) / 4, 2) + Math.pow(b, 2);
+          }
+        }
+      },
+      elastic: function (progress, x) {
+        return Math.pow(2, 10 * (progress - 1)) * Math.cos(20 * Math.PI * x / 3 * progress);
+      }
+    },
+    animate: function (options) {
+      var start = new Date;
+      var id = setInterval(function () {
+        var timePassed = new Date - start;
+        var progress = timePassed / options.duration;
+        if (progress > 1) {
+          progress = 1;
+        }
+        options.progress = progress;
+        var delta = options.delta(progress);
+        options.step(delta);
+        if (progress == 1) {
+          clearInterval(id);
+          options.complete();
+        }
+      }, options.delay || 10);
+    },
+    fadeOut: function (element, options) {
+      var to = 1;
+      this.animate({
+        duration: options.duration,
+        delta: function (progress) {
+          progress = this.progress;
+          return FX.easing.swing(progress);
+        },
+        complete: options.complete,
+        step: function (delta) {
+          element.style.opacity = to - delta;
+        }
+      });
+    },
+    fadeIn: function (element, options) {
+      var to = 0;
+      this.animate({
+        duration: options.duration,
+        delta: function (progress) {
+          progress = this.progress;
+          return FX.easing.swing(progress);
+        },
+        complete: options.complete,
+        step: function (delta) {
+          element.style.opacity = to + delta;
+        }
+      });
+    }
+  };
+  window.FX = FX;
+})()
+
+
+
+/* Hamburger Menu  */
 hamburgerMenu.addEventListener('click', () => {
   hamburgerMenu.classList.toggle('header__hamburger-open');
   navMenu.classList.toggle('nav-active');
   navOverlay.classList.toggle('overlay-active');
-
-  bodyNoScroll();
+  document.body.classList.toggle('bodyNoScroll');
 });
 
 navOverlay.addEventListener('click', () => {
   hamburgerMenu.classList.toggle('header__hamburger-open');
   navMenu.classList.toggle('nav-active');
   navOverlay.classList.toggle('overlay-active');
-
-  bodyNoScroll();
+  document.body.classList.toggle('bodyNoScroll');
 });
+
 
 
 // Open Contacts Menu
@@ -46,7 +236,7 @@ for (var i = 0; i < contactsButton.length; i++) {
     contactsMenu.classList.toggle("contacts-active");
     contactsOverlay.classList.toggle('overlay-active');
 
-    bodyNoScroll();
+    document.body.classList.toggle('bodyNoScroll');
   }, false);
 }
 
@@ -55,158 +245,416 @@ contactsClose.addEventListener('click', function () {
   contactsMenu.classList.toggle("contacts-active");
   contactsOverlay.classList.toggle('overlay-active');
 
-  bodyNoScroll();
+  document.body.classList.toggle('bodyNoScroll');
 });
 
 contactsOverlay.addEventListener('click', function () {
   contactsMenu.classList.toggle("contacts-active");
   contactsOverlay.classList.toggle('overlay-active');
 
-  bodyNoScroll();
+  document.body.classList.toggle('bodyNoScroll');
+
+});
+
+
+
+// Cart
+
+cartOpenButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  cart.style.display = "flex";
+  document.body.style.pointerEvents = "none";
+  FX.fadeIn(cart, {
+    duration: fadeTime,
+    complete: function () {
+      document.body.style.pointerEvents = "";
+
+    }
+  });
+});
+
+cartCloseButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  document.body.style.pointerEvents = "none";
+  FX.fadeOut(cart, {
+    duration: fadeTime,
+    complete: function () {
+      cart.style.display = "";
+      document.body.style.pointerEvents = "";
+    }
+  });
+});
+
+cartOverlay.addEventListener('click', function (event) {
+  event.preventDefault();
+  document.body.style.pointerEvents = "none";
+  FX.fadeOut(cart, {
+    duration: fadeTime,
+    complete: function () {
+      cart.style.display = "";
+      document.body.style.pointerEvents = "";
+    }
+  });
+});
+
+cartEmptyGoToCatalogButton.addEventListener('click', function (event) {
+  event.preventDefault();
+    document.body.style.pointerEvents = "none";
+    FX.fadeOut(cart, {
+      duration: fadeTime,
+      complete: function () {
+        cart.style.display = "";
+        document.body.style.pointerEvents = "";
+      }
+    });
+});
+
+if (cartGoToCatalogButton) {
+  cartGoToCatalogButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    window.location.href = 'index.html'
+  });
+}
+
+cartContunueShoppingButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  document.body.style.pointerEvents = "none";
+  FX.fadeOut(cart, {
+    duration: fadeTime,
+    complete: function () {
+      cart.style.display = "";
+      document.body.style.pointerEvents = "";
+    }
+  });
 });
 
 
 
 
+// Cart Items Counter // Increment // Decrement
+var cartItemsCounter = document.querySelectorAll('.cart__item').length;
+const cartOrderButton = document.querySelector('#buttonCartOrder');
+
+document.querySelector(".cart_counter").innerHTML = cartItemsCounter;
+
+function updateCartItemsCounter() {
+  if (cartItemsCounter > 0) {
+    document.querySelector(".cart_counter").style.display = 'block';
+  } else {
+    document.querySelector(".cart_counter").style.display = '';
+  }
+};
+updateCartItemsCounter();
+
+function incrementCartItemsCounter() {
+  cartItemsCounter++;
+  document.querySelector(".cart_counter").innerHTML = cartItemsCounter;
+  cartEmptyCheck();
+  updateCartItemsCounter();
+
+}
+
+function decrementCartItemsCounter() {
+  cartItemsCounter--;
+  document.querySelector(".cart_counter").innerHTML = cartItemsCounter;
+  cartEmptyCheck();
+  updateCartItemsCounter();
+
+}
 
 
+function cartInitFromLocalStorage() {
+  if (!(localStorage.length === 0)) {
+    // перебрать все ключи
+    for (var i = 0; i < localStorage.length; i++) {
+      // console.log("Cart Item #" + i);
+      var key = localStorage.key(i);
+      // console.log(key);
 
+      var value = localStorage.getItem(localStorage.key(i));
+      var value_deserialized = JSON.parse(value);
+      // console.log(value_deserialized[0]);
+      // console.log(value_deserialized[1]);
+      // console.log(" ");
 
-
-// hide Dropdown Menu function
-function hideDropdownMenuFunction() {
-  for (var i = 0; i < promoDropdownMenu.length; i++) {
-    promoDropdownMenu[i].classList.remove("promo__dropdown_menu-show");
+      var title = key;
+      var imageSrc = value_deserialized[0];
+      var itemCount = value_deserialized[1];
+      addItemToCart(title, imageSrc, itemCount);
+    }
+    // передать в функцию
+    // 
   }
 }
+cartInitFromLocalStorage();
 
 
-
-// Toggle Show i-th (appropriate) Dropdown Menu
-function toggleDropdownMenuFunction(i) {
-  promoDropdownMenu[i].classList.toggle("promo__dropdown_menu-show");
+// If Shopping Cart Is Empty
+function cartEmptyCheck() {
+  if (cartItemsCounter == 0) {
+    document.querySelector('.cart__subheading').style.display = 'none';
+    document.querySelector('.cart__items').style.display = 'none';
+    document.querySelector('.cart__buttons').style.display = 'none';
+    document.querySelector('.cart__empty').style.display = 'flex';
+  } else {
+    document.querySelector('.cart__subheading').style.display = '';
+    document.querySelector('.cart__items').style.display = '';
+    document.querySelector('.cart__buttons').style.display = '';
+    document.querySelector('.cart__empty').style.display = '';
+  }
 }
+cartEmptyCheck();
 
-for (let i = 0; i < promoDropdownInput.length; i++) {
-  promoDropdownInput[i].addEventListener('click', function () {
-    hideDropdownMenuFunction();
-    toggleDropdownMenuFunction(i);
-  })
-}
-
-
-
-
-
-// Dropdown Menu Item (tag a) onclick function
-function selectFromList(elem) {
-  // отслеживаем через дата-атрибут onclick
-  // берем текст из кликнутого элемента
-  // делаем замену значения у поля ввода на содержимое кликнутого элемента из выпадающего списка
-  /* document.getElementById("myInput").value = elem.innerHTML; */
-
-  // закрываем меню
-  /* hideDropdownMenuFunction(); */
-
-  elem.parentNode.classList.add('something');
-
-}
-
-
-
-// для каждого кликнутого promoDropdownItem
-for (let j = 0; j < promoDropdownItem.length; j++) {
-
-  // отслеживаем клик
-  promoDropdownItem[j].addEventListener('click', function (j) {
-
-    // подымаемся на уровень выше - parentNode
-    /* console.log(promoDropdownItem[j].parentNode.nodeName); */
-
-    // Определяем какой по счету это promoDropdownItem
-
-    // Берем i
-
-    // Берем i-й promoDropdownInput
-
-    // делаем замену value у input
-    /* document.getElementById("myInput").value = elem.innerHTML; */
-
-  })
+// If itemCount is zero or negative + update localStorage
+function quantityChanged(event) {
+  var input = event.target
+  if (isNaN(input.value) || input.value <= 0) {
+    input.value = 1
+  }
+  updateQuantityInLocalStorage(event);
 }
 
 
 
 
+function addItemToLocalStorage(title, imageSrc, itemCount) {
+  // check if cartItems object exists in localStorate
 
+  // add item to localStorage
+  var cartItemObj = [imageSrc, itemCount];
+  // console.log(cartItemObj); // (2) ["img/catalog/D057.webp", "1"]
 
+  localStorage.setItem(title, JSON.stringify(cartItemObj));
+  // console.log(localStorage); // Storage {Втулка резиновая BMW - D057: "["img/catalog/D057.webp","1"]", length: 1}
+}
 
+function removeFromLocalStorage(event) {
+  var remove = event.target;
+  // console.log(remove); // <button class="button cart__item_remove">×</button>
+  var itemTitle = remove.parentElement.parentElement.querySelector('.cart__item_title').innerText;
+  // console.log(itemTitle); // название товара
+  if (localStorage.getItem(itemTitle)) {
+    localStorage.removeItem(itemTitle)
+  }
 
-
-
-
-
-function filterFunction() {
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  div = promoDropdownMenu;
-  a = div.getElementsByTagName("a");
-  for (i = 0; i < a.length; i++) {
-    txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      a[i].style.display = "none";
+  if (document.querySelector('.order')) {
+    if (document.querySelector('.cart__items').innerHTML === "") {
+      window.location.href = "index.html"
     }
   }
 }
 
+function updateQuantityInLocalStorage(event) {
+  var counter = event.target.value; // counter in cart
+
+  var cartItemTitle = event.target.parentElement.parentElement.querySelector('.cart__item_title').innerText; // cart title
+
+  if (localStorage.getItem(cartItemTitle)) {
+    var itemInStorage_deserialized = JSON.parse(localStorage.getItem(cartItemTitle)); // taking appropriate item from localStorage and converting back to an object
+    itemInStorage_deserialized[1] = counter; // updating its counter in object
+    itemInStorage_serialized = JSON.stringify(itemInStorage_deserialized) // back to string form to export to localStorage
+    localStorage.setItem(cartItemTitle, itemInStorage_serialized) // update current value of appropriate key in localStorage
+  }
+}
 
 
 
-// CARD PAGE
-// взять массив card-page__photos_img
-const cardPageImages = document.querySelectorAll(".card-page__photos_img"),
-cardpageImageBig = document.querySelector(".card-page__photos_big");
 
 
-cardpageImageBig.children[0].src = cardPageImages[0].children[0].src;
+// remove Cart Item in Cart Window
+function removeCartItem(event) {
+  var buttonClicked = event.target;
+  buttonClicked.parentElement.parentElement.remove();
+  decrementCartItemsCounter();
+  updateCartItemsCounter();
+  cartEmptyCheck();
+  removeFromLocalStorage(event);
+}
 
-// для каждого изображения
-for (let i = 0; i < cardPageImages.length; i++) {
+for (var i = 0; i < removeCartItemButtons.length; i++) {
+  var button = removeCartItemButtons[i];
+  button.addEventListener('click', removeCartItem);
+}
 
-  cardPageImages[i].addEventListener('click', function() {
-    console.log(cardPageImages[i]);
 
-    // брать src у маленького изображения
-    var smallImgSrc = cardPageImages[i].children[0].src;
 
-    // подставлять в большое
-    cardpageImageBig.children[0].src = smallImgSrc;
 
+// Add Item To Cart
+const addToCartButtons = document.querySelectorAll(".catalog__card_cart");
+for (var i = 0; i < addToCartButtons.length; i++) {
+  var button = addToCartButtons[i];
+  button.addEventListener('click', addToCartClicked) // отслеживаем клик у кнопок "Добавить в корзину"
+}
+
+function addToCartClicked(event) {
+  var button = event.target;
+  var catalogItem = button.parentElement.parentElement;
+  var title = catalogItem.querySelector(".catalog__card_text").querySelector(".catalog__card_descr").innerHTML;
+  var itemCount = catalogItem.querySelector('.catalog__card_buttons').querySelector('.catalog__card_counter').value;
+  var imageSrc = catalogItem.querySelector(".catalog__card_img").children[0].srcset;
+  addItemToCart(title, imageSrc, itemCount); // Берем параметры у карточки товара: имя и ссылка на картинку
+
+  // открытие корзины
+  cart.style.display = "flex";
+  FX.fadeIn(cart, {
+    duration: fadeTime,
+    complete: function () {}
   });
 }
 
 
-// УЗНАТЬ ЦЕНУ
 
-const whatsThePriceButton = document.querySelector('.card-page__button-price');
-const socialButtons = document.querySelector('.card-page__social');
 
-whatsThePriceButton.addEventListener('click', () => {
-  socialButtons.classList.add("card-page__social-active")
-});
+function addItemToCart(title, imageSrc, itemCount) {
+  var cartItem = document.createElement('div'); // создаем блок для дальнейшего его добавления в корзину
+  cartItem.classList.add('cart__item'); // добавляем этому блоку стили добавленного товара
+
+  var cartItems = document.querySelector('.cart__items'); // проверка "добавлен ли уже такой товар в корзину"
+  var cartItemNames = cartItems.querySelectorAll('.cart__item_title');
+  for (var i = 0; i < cartItemNames.length; i++) {
+    if (cartItemNames[i].innerText == title) {
+      alert('Этот товар уже в корзине')
+      return
+    }
+  }
+
+  var cartItemContent = `
+  <picture class="cart__item_img">
+    <source srcset="${imageSrc}" type="image/webp">
+    <source srcset="${imageSrc}" type="image/jpeg"> 
+    <img src="${imageSrc}" alt="">
+  </picture>
+  <div class="cart__item_title">${title}</div>
+  <div class="cart__item_buttons">
+    <input type="number" value="${itemCount}" min="1" step="1" class="cart__item_quantity">
+    <button class="button cart__item_remove">&times;</button>
+  </div>`; // HTML единицы товара в корзине (контент)
+  cartItem.innerHTML = cartItemContent; // добавляем контент как "внутренний HTML" к созданному div'у
+  cartItems.appendChild(cartItem); // подставляем созданный div с его контентом В НАЧАЛО обертки cart__items
+  cartItem.querySelector('.cart__item_buttons').querySelector('.cart__item_remove').addEventListener('click', removeCartItem)
+  incrementCartItemsCounter(); // обновим счетчик кол-ва товара в корзине
+  updateCartItemsCounter(); // проверка: была ли пустая корзина
+
+  cartItem.querySelector('.cart__item_buttons').querySelector('.cart__item_quantity').addEventListener('change', quantityChanged); // >=1
+  cartItem.querySelector('.cart__item_buttons').querySelector('.cart__item_remove').addEventListener('click', removeFromLocalStorage);
+
+  addItemToLocalStorage(title, imageSrc, itemCount);
+}
+
+
+
+
+
+
+
+// Фильтры
+
+var x, i, j, l, ll, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("promo__dropdown");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function (e) {
+      /*when an item is clicked, update the original select box,
+      and the selected item:*/
+      var y, i, k, s, h, sl, yl;
+      s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+      sl = s.length;
+      h = this.parentNode.previousSibling;
+      for (i = 0; i < sl; i++) {
+        if (s.options[i].innerHTML == this.innerHTML) {
+          s.selectedIndex = i;
+          h.innerHTML = this.innerHTML;
+          y = this.parentNode.getElementsByClassName("same-as-selected");
+          yl = y.length;
+          for (k = 0; k < yl; k++) {
+            y[k].removeAttribute("class");
+          }
+          this.setAttribute("class", "same-as-selected");
+          break;
+        }
+      }
+      h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function (e) {
+    /*when the select box is clicked, close any other select boxes,
+    and open/close the current select box:*/
+    e.stopPropagation();
+    closeAllSelect(this);
+    this.nextSibling.classList.toggle("select-hide");
+    this.classList.toggle("select-arrow-active");
+  });
+}
+
+
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+
+
+
+
 
 
 
 
 // COUNTER на каждой карточке
+function plus(el) {
+  el.parentNode.children[1].value++;
+  if (el.parentNode.children[1].value > 99) {
+    el.parentNode.children[1].style.width = '36px';
+  } else {
+    el.parentNode.children[1].style.width = '';
+  }
+}
 
-// собираем все catalog__card_buttons
-/* const catalogCardButtons = document.querySelectorAll(".catalog__card_buttons");
-
-
-for (let i = 0; i < catalogCardButtons.length; i++) {
-
-} */
+function minus(el) {
+  if (el.parentNode.children[1].value > 1) {
+    el.parentNode.children[1].value--
+  }
+  if (el.parentNode.children[1].value > 99) {
+    el.parentNode.children[1].style.width = '36px';
+  } else {
+    el.parentNode.children[1].style.width = '';
+  }
+}

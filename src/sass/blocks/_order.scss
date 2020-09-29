@@ -1,0 +1,84 @@
+.order {
+   padding: 50px 0;
+   &__heading {
+      text-align: center;
+      font-size: 28px;
+   }
+   &__title {
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      text-align: center;
+   }
+   &__items {
+      margin-top: 40px;
+   }
+   &__info {
+      overflow: hidden;
+      width: 480px;
+      max-width: 100%;
+      margin: 40px auto 0;
+      padding: 0 10px;
+      legend {
+         text-align: center;
+      }
+      .checkboxes {
+         display: flex;
+         justify-content: center;
+         flex-wrap: wrap;
+         &__title {
+            text-align: center;
+            width: 100%;
+         }
+         input[type=radio] {
+            position: absolute;
+            left: -9999px;
+         }
+         input[type=radio]:checked + label {
+            background: $yellow;
+            color: $black
+         }
+         .checkbox {
+            width: 120px;
+            height: 40px;
+            background: $grey-alt;
+            color: #fff;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 16px;
+            line-height: 40px;
+            display: inline-block;
+            margin: 10px;
+            box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+            transition: all .3s linear;
+            cursor: pointer;
+         }
+      }
+      .inputs {
+         display: flex;
+         flex-direction: column;
+         input {
+            border: solid 1px $grey-alt;
+            border-radius: 2px;
+            color: $grey;
+            padding: 5px;
+         }
+         label {
+            margin-bottom: 0;
+            margin-top: 20px;
+            color: $grey;
+            span {
+               color: $red
+            }
+         }
+         input:focus {
+            color: $black;
+            border: solid 1px $black;
+         }
+         #comment {
+            border: solid 1px $grey-alt;
+            margin-bottom: 30px;
+         }
+      }
+   }
+}

@@ -18,13 +18,15 @@
    }
    &__card {
       width: 232px;
-      margin-bottom: 30px;
+      margin: 0 auto 30px;
       background: #fff;
-      box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
       border-radius: 5px;
       overflow: hidden;
       position: relative;
       @include hover-zoom-effect;
+      display: flex;
+      flex-direction: column;
       &_link {
          position: absolute;
          top: 0;
@@ -35,15 +37,16 @@
       }
       &_like {
          position: absolute;
+         display: none; // remove this when you'll develop the account page
          top: 8px;
          right: 18px;
          width: 24px;
          height: 24px;
-         background: url('../../icons/favorite.svg') center center no-repeat;
+         background: url('../icons/favorite.svg') center center no-repeat;
          border: none;
          transition: background .2s linear;
          &:hover, &:focus {
-            background: url('../../icons/favorite-red.svg') center center no-repeat;
+            background: url('../icons/favorite-red.svg') center center no-repeat;
             outline: none;
          }
          z-index: 2;
@@ -79,12 +82,18 @@
       &_text {
          padding: 3px 20px 18px;
          position: relative;
+         flex-grow: 1;
+         height: 80px;
       }
       &_descr {
          font-size: 14px;
          font-weight: 400;
          line-height: 110%;
          letter-spacing: 0.625px;
+         display: -webkit-box;
+         -webkit-line-clamp: 4;
+         -webkit-box-orient: vertical;
+         overflow-y: hidden;
       }
       &_available {
          position: absolute;
@@ -101,6 +110,7 @@
          padding-right: 20px;
          background: $grey-alt;
          min-height: 36px;
+         
       }
       &_minus, &_plus {
          border: none;
@@ -109,10 +119,16 @@
          height: 32px;
       }
       &_minus {
-         background: url(../../icons/minus.svg) center center no-repeat;
+         background: url('../icons/minus.svg') center center no-repeat;
+         &:active, &:focus {
+            outline: none;
+         }
       }
       &_plus {
-         background: url(../../icons/plus.svg) center center no-repeat;
+         background: url('../icons/plus.svg') center center no-repeat;
+         &:active, &:focus {
+            outline: none;
+         }
       }
       &_counter {
          width: 25px;
@@ -121,11 +137,20 @@
          font-size: 18px;
          background: #FFFFFF;
          border-radius: 2px;
+         border: none;
          text-align: center;
+         &:active, &:focus {
+            outline: none;
+         }
+         &::-webkit-outer-spin-button,
+         &::-webkit-inner-spin-button {
+           -webkit-appearance: none;
+           margin: 0;
+         }
       }
       &_cart {
          border: none;
-         background: url('../../icons/cart-white.svg') center center no-repeat;
+         background: url('../icons/cart-white.svg') center center no-repeat;
          height: 36px;
          width: 32px;
          margin-left: 15px;

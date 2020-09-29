@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/style.min.css">
+   <title>Страница товара</title>
+</head>
+
+<body>
+   @@include('./html-parts/_header.html')
+
+   <section class="card-page">
+      <div class="container">
+         <div class="card-page__breadcrumbs">
+            <div class="card-page__breadcrumbs_link">Главная</div>
+            <div class="card-page__breadcrumbs_link">Каталог</div>
+            <div class="card-page__breadcrumbs_link">Клипсы автомобильные Ford</div>
+         </div>
+         <div class="card-page__main">
+            <div class="card-page__photos">
+               <div class="card-page__photos_big">
+                  <picture class="catalog__card_img">
+                     <source srcset="img/catalog/D471.webp" type="image/webp">
+                     <source srcset="img/catalog/D471.jpg" type="image/jpeg"> 
+                     <img src="img/catalog/D471.jpg" alt="">
+                  </picture>
+               </div>
+               <div class="card-page__photos_wrapper">
+                  <a href="catalog-5.html" class="card-page__photos_img">
+                     <picture class="catalog__card_img">
+                        <source srcset="img/catalog/D214.webp" type="image/webp">
+                        <source srcset="img/catalog/D214.jpg" type="image/jpeg"> 
+                        <img src="img/catalog/D214.jpg" alt="">
+                     </picture>
+                  </a>
+                  <a href="catalog-6.html" class="card-page__photos_img">
+                     <picture class="catalog__card_img">
+                        <source srcset="img/catalog/D471.webp" type="image/webp">
+                        <source srcset="img/catalog/D471.jpg" type="image/jpeg"> 
+                        <img src="img/catalog/D471.jpg" alt="">
+                     </picture>
+                  </a>
+                  <a href="catalog-7.html" class="card-page__photos_img">
+                     <picture class="catalog__card_img">
+                        <source srcset="img/catalog/D155.webp" type="image/webp">
+                        <source srcset="img/catalog/D155.jpg" type="image/jpeg"> 
+                        <img src="img/catalog/D155.jpg" alt="">
+                     </picture>
+                  </a>
+                  <a href="catalog-8.html" class="card-page__photos_img">
+                     <picture class="catalog__card_img">
+                        <source srcset="img/catalog/D057.webp" type="image/webp">
+                        <source srcset="img/catalog/D057.jpg" type="image/jpeg"> 
+                        <img src="img/catalog/D057.jpg" alt="">
+                     </picture>
+                  </a>
+               </div>
+            </div>
+            <div class="card-page__side">
+               <div class="card-page__info">
+                  <h2 class="card-page__info_heading">Держатель крепления листвы порога Ford Mondeo (2014-..) - D471</h2>
+                  <div class="card-page__info_wrapper">
+                     <table>
+                        <tr>
+                           <th class="card-page__info_property">Clipulka # </th>
+                           <td class="card-page__info_value">D471</td>
+                        </tr>
+                        <tr>
+                           <th class="card-page__info_property">Количество</th>
+                           <td class="card-page__info_value">
+                              <form class="card-page__info_counter" action="/action_page.php">
+                                 <input type="number" id="points" name="points" value="1" step="1" min="1">
+                              </form>
+                           </td>
+                        </tr>
+                        <tr>
+                           <th class="card-page__info_property">Марка автомобиля</th>
+                           <td class="card-page__info_value">Ford</td>
+                        </tr>
+                        <tr>
+                           <th class="card-page__info_property">Модель автомобиля</th>
+                           <td class="card-page__info_value">Mondeo V</td>
+                        </tr>
+                        <tr>
+                           <th class="card-page__info_property">Место установки</th>
+                           <td class="card-page__info_value">Пороги</td>
+                        </tr>
+                     </table>
+                  </div>
+                  <div class="card-page__info_title">Описание</div>
+                  <div class="card-page__info_text">Пистон крепления листвы порога Ford Mondeo V (2014 - ...) - количество 14</div>
+               </div> <!-- info -->
+               <div class="card-page__buttons">
+                  <button id="addToCartFromCardPage" class="button card-page__button card-page__button-addtocart">
+                     <img src="icons/cart.svg" alt="">
+                     в корзину
+                  </button>
+                  <button class="button card-page__button card-page__button-price">
+                     <img src="icons/question.svg" alt="">
+                     узнать цену
+                  </button>
+                  <div class="card-page__social">
+                     <a href="#" class="button card-page__social_item">
+                        <img src="icons/social/facebook.svg" alt="">
+                     </a>
+                     <a href="viber://chat?number=375291457774" class="button card-page__social_item">
+                        <img src="icons/social/viber.svg" alt="">
+                     </a>
+                     <a href="#" class="button card-page__social_item">
+                        <img src="icons/social/whatsapp.svg" alt="">
+                     </a>
+                     <a href="#" class="button card-page__social_item">
+                        <img src="icons/social/skype.svg" alt="">
+                     </a>
+                     <a href="#" class="button card-page__social_item">
+                        <img src="icons/social/telegram.svg" alt="">
+                     </a>
+                  </div>
+               </div> <!-- buttons -->
+            </div> <!-- side -->
+            <div class="card-page__available show">
+               есть в наличии
+            </div>
+         </div> <!-- main -->
+
+      </div>
+   </section>
+
+   
+
+   @@include('./html-parts/_footer.html')
+   @@include('./html-parts/_cart.html')
+
+   <div class="modal whatsThePrice">
+      <div class="overlay" id="whatsThePriceOverlay"></div>
+
+      <div class="modal__inner whatsThePrice__inner">
+         <button class="button modal__close whatsThePrice__close">&times;</button>
+         <a href="tel:+375291457774" class="button whatsThePrice__inner_call">Позвонить</a>
+         <a href="viber://chat?number=375291457774" class="button whatsThePrice__inner_viber">Написать в Viber</a>
+      </div>
+   </div>
+
+   <script src="js/script.js"></script>
+   <script src="js/cardpage.js"></script>
+</body>
+
+</html>

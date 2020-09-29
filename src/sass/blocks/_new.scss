@@ -16,13 +16,14 @@
    &__controls {
       display: flex;
       justify-content: flex-end;
+      position: relative;
       &_button {
          width: 32px;
          height: 32px;
          margin-left: 16px;
          @include pressing-effect-deep;
          &-left {
-            background: #F8E541 url('../../icons/triangle-left.svg') center center no-repeat;
+            background: #F8E541 url('../icons/triangle-left.svg') center center no-repeat;
             background-size: 16px 20px;
             transition: filter .2s linear;
             &:hover {
@@ -30,7 +31,7 @@
             }
          }
          &-right {
-            background: #F8E541 url('../../icons/triangle-right.svg') center center no-repeat;
+            background: #F8E541 url('../icons/triangle-right.svg') center center no-repeat;
             background-size: 16px 20px;
             transition: filter .2s linear;
             &:hover {

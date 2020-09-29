@@ -142,13 +142,16 @@
          height: 32px;
          @include pressing-effect;
          @include hover-effect;
-
-         .counter {
-            position: absolute;
-            color: $yellow;
-            top: 0;
-            right: 0;
-         }
+      }
+      .favoritesButton {
+         display: none;
+      }
+      .cart_counter {
+         position: absolute;
+         color: $yellow;
+         top: 0;
+         right: 0;
+         display: none;
       }
    }
 
@@ -229,24 +232,52 @@
          }
 
          &:hover:after {
-            opacity: 1;
+            opacity: .5;
+         }
+
+         &-active {
+            &:after {
+               position: absolute;
+               content: '';
+               width: 100%;
+               height: 2px;
+               background-color: #fff;
+               bottom: 5px;
+               left: 0;
+               opacity: 1;
+               transition: all .2s linear;
+            }
          }
       }
    }
-   .overlay {
-      position: fixed;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      bottom: 0;
-      background: rgba(0,0,0,.65);
-      z-index: 1;
-      transition: all .7s ease-in;
-      &-active {
-         left: 0;
-      }
-   }
+   
    #contactsOverlay {
       z-index: 3;
    }
+}
+
+.overlay {
+   position: fixed;
+   top: 0;
+   left: -100%;
+   width: 100%;
+   bottom: 0;
+   background: rgba(0,0,0,.65);
+   z-index: 1;
+   transition: all .7s ease-in;
+   &-active {
+      left: 0;
+   }
+}
+
+.pagetitle {
+   background: #121212;
+   color: #fff;
+   font-size: 18px;
+   line-height: 36px;
+   text-align: center;
+   display: none;
+   width: 100%;
+   height: 36px;
+   text-transform: uppercase;
 }

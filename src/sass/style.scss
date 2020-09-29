@@ -8,6 +8,7 @@ body {
    font-family: Gilroy;
    font-size: 14px;
    min-width: 320px;
+   overflow-x: hidden;
 }
 
 .container {
@@ -22,6 +23,12 @@ a {
       text-decoration: none;
       color: inherit;
    }   
+}
+
+button {
+   &:focus, &:active {
+      outline: none;
+   }
 }
 
 input {
@@ -44,6 +51,12 @@ iframe {
    height: 100%;
 }
 
+.bodyNoScroll {
+   overflow-y:hidden; 
+   position: relative; 
+   margin-right: var(--widthReflow);
+}
+
 @import 'blocks/buttons';
 @import 'blocks/textblock';
 @import 'blocks/header';
@@ -58,4 +71,9 @@ iframe {
 @import 'blocks/contacts';
 @import 'blocks/send';
 @import 'blocks/how';
+@import 'blocks/cart';
+@import 'blocks/order';
+@import 'blocks/success';
+@import 'libs/splide.min';
+
 @import 'base/media';

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.min.css">
+	<title>Главная</title>
+</head>
+
+<body>
+	@@include('./html-parts/_header.html')
+
+	<div class="success">
+		<div class="success__icon">
+			<img src="icons/check.svg" alt="">
+		</div>
+		<h2 class="success__title">ВАШ ЗАКАЗ ПРИНЯТ!</h2>
+		<h3 class="success__text">Мы свяжемся с Вами в ближайшее время для уточнения деталей заказа.</h3>
+		<button class="button cart__empty_button cart__empty_button-grey success__button" id="goToCatalog">На главную</button>
+	</div>
+
+	@@include('./html-parts/_footer.html')
+	@@include('./html-parts/_cart.html')
+
+	<script src="js/script.js"></script>
+</body>
+
+</html>

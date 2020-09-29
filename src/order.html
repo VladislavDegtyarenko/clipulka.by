@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/style.min.css">
+   <title>Оформление заказа</title>
+</head>
+
+<body>
+   @@include('./html-parts/_header.html')
+
+   <section class="order">
+      <div class="container">
+         <h2 class="order__heading">Оформить заказ</h2>
+
+         <form class="order__wrapper">
+
+            <div class="order__items">
+               <h3 class="order__title">Товар в корзине</h3>
+               <div class="cart__items"></div>
+            </div>
+
+            <fieldset class="order__info">
+               <legend>Данные заказчика</legend>
+               <div class="checkboxes">
+                  <h4 class="checkboxes__title">Группа покупателя</h4>
+                  <input type="radio" id="individual" name="buyer-group" value="individual">
+                  <label class="checkbox" for="individual">физлицо</label>
+                  <input type="radio" id="entity" name="buyer-group" value="entity">
+                  <label class="checkbox" for="entity">юрлицо</label>
+               </div>
+
+               <div class="inputs">
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email">
+                  <label for="telephone"><span>*</span>Телефон:</label>
+                  <input type="tel" id="telephone" name="telephone">
+
+                  <label for="lname"><span>*</span>Фамилия:</label>
+                  <input type="text" id="lname" name="lname">
+                  <label for="fname"><span>*</span>Имя:</label>
+                  <input type="text" id="fname" name="fname">
+                  <label for="mname"><span>*</span>Отчество:</label>
+                  <input type="text" id="mname" name="mname">
+                  <label for="zip"><span>*</span>Почтовый индекс:</label>
+                  <input type="text" id="zip" name="zip">
+                  <label for="city"><span>*</span>Город:</label>
+                  <input type="text" id="city" name="city">
+                  <label for="address"><span>*</span>Адрес:</label>
+                  <input type="text" id="address" name="address">
+
+                  <label for="comment">Комментарий:</label>
+                  <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
+               </div>
+               <button class="button cart__empty_button cart__empty_button-grey" id="goToCatalog">Вернуться в каталог</button>
+               <a href="success.html" class="button cart__order" id="submitOrder">Оформить заказ</a>
+              
+            </fieldset>
+         </form>
+
+      </div>
+   </section>
+
+
+
+   @@include('./html-parts/_footer.html')
+   @@include('./html-parts/_cart.html')
+
+   <script src="js/script.js"></script>
+</body>
+
+</html>

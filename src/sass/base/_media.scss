@@ -19,6 +19,9 @@
          }
       }
    }
+   .promo {
+      background: url('../img/main-bg-1199.jpg') left top / cover no-repeat;
+   }
    .advantages {
       padding: 10px 0px;
    }
@@ -46,6 +49,9 @@
    .contacts {
       &__inner {
          max-height: 800px;
+      }
+      &__item_text {
+         font-size: 13px;
       }
    }
    .card-page {
@@ -85,6 +91,7 @@
       }
    }
    .promo {
+      background: url('../img/main-bg-991.jpg') left top / cover no-repeat;
       &__filter {
          min-width: 560px;
       }
@@ -174,17 +181,6 @@
    .header {
       padding-left: 205px;
       height: 142px;
-      &:after {
-         content: '';
-         background: #121212;
-         bottom: 0;
-         left: 0;
-         z-index: 0;
-         display: block;
-         width: 100%;
-         height: 52px;
-         position: absolute;
-      }
       &__hamburger {
          display: flex;
          position: absolute;
@@ -249,8 +245,11 @@
          }
       }
    }
+   .pagetitle {
+      display: block;
+   }
    .promo {
-      background: url(../img/main-bg.jpg) left -470px center/cover no-repeat;
+      background: url('../img/main-bg-767.jpg') left top / cover no-repeat;
       &__title {
          font-size: 24px;
       }
@@ -269,11 +268,17 @@
          min-height: 170px;
       }
       &__dropdown {
+         width: 90%;
          &:not(:last-child)::after {
             width: 100%;
+            top: unset;
             right: 0;
             bottom: -3px;
             height: 1px;
+         }
+         .select-selected:after {
+            top: 26px;
+            right: 5px;
          }
       }
    }
@@ -415,7 +420,7 @@
       }
    }
    .promo {
-      background: url(../img/main-bg.jpg) left -600px center/cover no-repeat;
+      background: url('../img/main-bg-479.jpg') left top / cover no-repeat;
       &__title {
          font-size: 18px;
       }
@@ -466,6 +471,16 @@
          width: 100%;
       }
    }
+   .cart {
+      &__buttons {
+         flex-wrap: wrap;
+         flex-direction: column-reverse;
+         a, button {
+            width: 100%;
+            margin-top: 10px;
+         }
+      }
+   }
    .textblock {
       padding: 24px 15px;
    }
@@ -481,8 +496,14 @@
       }
    }
    .card-page {
+      &__main {
+         margin-top: 50px;
+      }
       &__photos {
          max-width: 100%;
+         &_big {
+            height: 280px;
+         }
          &_wrapper {
             grid-template-columns: repeat(auto-fill,75px);
          }
