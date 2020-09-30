@@ -101,4 +101,4 @@ gulp.task('images', function () {
 
 
 
-gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'scripts', 'fonts', 'icons', 'mailer', 'webp', 'images', 'html-include-minify'));
+gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'scripts', 'fonts', 'icons', 'mailer', /* 'webp',  */'images', 'html-include-minify'));

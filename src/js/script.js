@@ -438,10 +438,10 @@ cartInitFromLocalStorage();
 // add item to localStorage
 function addItemToLocalStorage(title, imageSrc, itemCount) {
   var cartItemObj = [imageSrc, itemCount];
-  // console.log(cartItemObj); // (2) ["img/catalog/D057.webp", "1"]
+  // console.log(cartItemObj); // (2) ["img/catalog/D057.jpg", "1"]
 
   localStorage.setItem(title, JSON.stringify(cartItemObj));
-  // console.log(localStorage); // Storage {Втулка резиновая BMW - D057: "["img/catalog/D057.webp","1"]", length: 1}
+  // console.log(localStorage); // Storage {Втулка резиновая BMW - D057: "["img/catalog/D057.jpg","1"]", length: 1}
 }
 
 function removeFromLocalStorage(event) {
@@ -508,7 +508,7 @@ function addToCartClicked(event) {
   var catalogItem = button.parentElement.parentElement;
   var title = catalogItem.querySelector(".catalog__card_text").querySelector(".catalog__card_descr").innerHTML;
   var itemCount = catalogItem.querySelector('.catalog__card_buttons').querySelector('.catalog__card_counter').value;
-  var imageSrc = catalogItem.querySelector(".catalog__card_img").children[0].srcset;
+  var imageSrc = catalogItem.querySelector(".catalog__card_img").children[0].src;
   addItemToCart(title, imageSrc, itemCount); // Берем параметры у карточки товара: имя и ссылка на картинку
 
   // открытие корзины
@@ -533,11 +533,9 @@ function addItemToCart(title, imageSrc, itemCount) {
   }
 
   var cartItemContent = `
-  <picture class="cart__item_img">
-    <source srcset="${imageSrc}" type="image/webp">
-    <source srcset="${imageSrc}" type="image/jpeg"> 
+  <div class="cart__item_img">
     <img src="${imageSrc}" alt="">
-  </picture>
+  </div>
   <div class="cart__item_title">${title}</div>
   <div class="cart__item_buttons">
     <input type="number" value="${itemCount}" min="1" step="1" class="cart__item_quantity">
