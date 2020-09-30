@@ -142,6 +142,9 @@
          height: 32px;
          @include pressing-effect;
          @include hover-effect;
+         img {
+            width: 25px;
+         }
       }
       .favoritesButton {
          display: none;
@@ -149,8 +152,8 @@
       .cart_counter {
          position: absolute;
          color: $yellow;
-         top: 0;
-         right: 0;
+         top: -5px;
+         right: -5px;
          display: none;
       }
    }

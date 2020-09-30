@@ -21,8 +21,8 @@
       position: absolute;
       background: none;
       font-size: 36px;
-      top: 18px;
-      right: 16px;
+      top: 15px;
+      right: 15px;
       padding: 0 8px;
       line-height: 100%;
    }
@@ -40,7 +40,8 @@
       min-height: 400px;
 }
    &__heading {
-      font-size: 18px;
+      @include flex-center;
+      font-size: 21px;
       font-weight: 700;
       line-height: 100%;
       padding: 0 5px;
