@@ -1,7 +1,7 @@
 @font-face {
    font-family: 'Gilroy';
    src: url('../fonts/Gilroy-Bold.eot');
-   src: local('../fonts/Gilroy Bold'), local('Gilroy-Bold'),
+   src: local('fonts/Gilroy Bold'), local('Gilroy-Bold'),
        url('../fonts/Gilroy-Bold.eot?#iefix') format('embedded-opentype'),
        url('../fonts/Gilroy-Bold.woff') format('woff'),
        url('../fonts/Gilroy-Bold.ttf') format('truetype');
@@ -10,9 +10,9 @@
 }
 
 @font-face {
-   font-family: '../fonts/Gilroy';
+   font-family: 'Gilroy';
    src: url('../fonts/Gilroy-Regular.eot');
-   src: local('../fonts/Gilroy Regular'), local('Gilroy-Regular'),
+   src: local('fonts/Gilroy Regular'), local('Gilroy-Regular'),
        url('../fonts/Gilroy-Regular.eot?#iefix') format('embedded-opentype'),
        url('../fonts/Gilroy-Regular.woff') format('woff'),
        url('../fonts/Gilroy-Regular.ttf') format('truetype');
