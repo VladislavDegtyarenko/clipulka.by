@@ -59,9 +59,14 @@
       margin-left: 50px;
    }
    &__info {
+      &_value {
+         height: 100%;
+      }
       &_counter {
+         height: 100%;
          input {
             border: none;
+            height: 100%;
             width: 45px;
             text-align: center;
          }

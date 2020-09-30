@@ -19,6 +19,14 @@
    &__contacts {
       padding-right: 10px;
       flex-basis: 20%;
+      
+      &_icon {
+         width: 20px;
+         height: 20px;
+      }
+      .mts {
+         margin-right: 2px;
+      }
    }
    &__map {
       width: 270px;
@@ -55,9 +63,7 @@
          justify-content: flex-start;
          align-items: center;
          margin-top: 12px;
-         &:not(:last-child) {
-            margin-left: 5px;
-         }
+         
          @include pressing-effect;
       }
       &_text {

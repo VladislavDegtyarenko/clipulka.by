@@ -133,12 +133,12 @@
       &_counter {
          width: 25px;
          height: 20px;
-         line-height: 20px;
          font-size: 18px;
          background: #FFFFFF;
          border-radius: 2px;
          border: none;
          text-align: center;
+         @include flex-center;
          &:active, &:focus {
             outline: none;
          }
