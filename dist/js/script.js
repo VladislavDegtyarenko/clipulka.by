@@ -438,10 +438,10 @@ cartInitFromLocalStorage();
 // add item to localStorage
 function addItemToLocalStorage(title, imageSrc, itemCount) {
   var cartItemObj = [imageSrc, itemCount];
-  // console.log(cartItemObj); // (2) ["img/catalog/D057.jpg", "1"]
+  // console.log(cartItemObj); // (2) ["img/catalog/d057.jpg", "1"]
 
   localStorage.setItem(title, JSON.stringify(cartItemObj));
-  // console.log(localStorage); // Storage {Втулка резиновая BMW - D057: "["img/catalog/D057.jpg","1"]", length: 1}
+  // console.log(localStorage); // Storage {Втулка резиновая BMW - d057: "["img/catalog/d057.jpg","1"]", length: 1}
 }
 
 function removeFromLocalStorage(event) {
