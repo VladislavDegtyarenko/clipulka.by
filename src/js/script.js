@@ -264,12 +264,12 @@ contactsOverlay.addEventListener('click', function () {
 cartOpenButton.addEventListener('click', function (event) {
   event.preventDefault();
   cart.style.display = "flex";
+  document.body.classList.toggle('bodyNoScroll');
   document.body.style.pointerEvents = "none";
   FX.fadeIn(cart, {
     duration: fadeTime,
     complete: function () {
       document.body.style.pointerEvents = "";
-
     }
   });
 });
@@ -277,6 +277,7 @@ cartOpenButton.addEventListener('click', function (event) {
 cartCloseButton.addEventListener('click', function (event) {
   event.preventDefault();
   document.body.style.pointerEvents = "none";
+  document.body.classList.toggle('bodyNoScroll');
   FX.fadeOut(cart, {
     duration: fadeTime,
     complete: function () {
@@ -289,6 +290,7 @@ cartCloseButton.addEventListener('click', function (event) {
 cartOverlay.addEventListener('click', function (event) {
   event.preventDefault();
   document.body.style.pointerEvents = "none";
+  document.body.classList.toggle('bodyNoScroll');
   FX.fadeOut(cart, {
     duration: fadeTime,
     complete: function () {
