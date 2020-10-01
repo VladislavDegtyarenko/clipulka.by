@@ -95,6 +95,7 @@ switch (page) {
     break;
   case 'order.html': // на странице оформления заказа
     document.querySelector('.cartButton').style.display = 'none'; // скрываем корзину в шапке
+    break;
   default:
     pageTitleOnMobile.innerHTML = "";
 }
@@ -204,7 +205,7 @@ if (hasTouch()) { // remove all the :hover stylesheets
     }
   };
   window.FX = FX;
-})()
+})();
 
 
 
@@ -312,7 +313,7 @@ cartEmptyGoToCatalogButton.addEventListener('click', function (event) {
 if (cartGoToCatalogButton) {
   cartGoToCatalogButton.addEventListener('click', function (event) {
     event.preventDefault();
-    window.location.href = 'index.html'
+    window.location.href = 'index.html';
   });
 }
 
@@ -344,12 +345,12 @@ function updateCounterOnCartIcon() {
 
   for (var i = 0; i < localStorage.length; i++) {
     var value = localStorage.getItem(localStorage.key(i));
-    var value_deserialized = JSON.parse(value);
-    counter = counter + parseInt(value_deserialized[1]);
+    var valueDeserialized = JSON.parse(value);
+    counter = counter + parseInt(valueDeserialized[1]);
   }
   counterOnCartIcon = counter;
   document.querySelector(".cart_counter").innerHTML = counterOnCartIcon;
-};
+}
 updateCounterOnCartIcon();
 
 function showHideCounterOnCartIcon() {
@@ -358,7 +359,7 @@ function showHideCounterOnCartIcon() {
   } else {
     document.querySelector(".cart_counter").style.display = '';
   }
-};
+}
 showHideCounterOnCartIcon();
 
 // If Shopping Cart Is Empty
@@ -374,14 +375,14 @@ function cartEmptyCheck() {
     document.querySelector('.cart__buttons').style.display = '';
     document.querySelector('.cart__empty').style.display = '';
   }
-};
+}
 cartEmptyCheck();
 
 // If itemCount is zero or negative then hide counter + update localStorage
 function quantityChanged(event) {
-  var input = event.target
+  var input = event.target;
   if (isNaN(input.value) || input.value <= 0) {
-    input.value = 1
+    input.value = 1;
   }
   updateQuantityInLocalStorage(event);
   updateCounterOnCartIcon(event);
@@ -413,14 +414,14 @@ function cartInitFromLocalStorage() {
       // console.log(key);
 
       var value = localStorage.getItem(localStorage.key(i));
-      var value_deserialized = JSON.parse(value);
-      // console.log(value_deserialized[0]);
-      // console.log(value_deserialized[1]);
+      var valueDeserialized = JSON.parse(value);
+      // console.log(valueDeserialized[0]);
+      // console.log(valueDeserialized[1]);
       // console.log(" ");
 
       var title = key;
-      var imageSrc = value_deserialized[0];
-      var itemCount = value_deserialized[1];
+      var imageSrc = valueDeserialized[0];
+      var itemCount = valueDeserialized[1];
       addItemToCart(title, imageSrc, itemCount);
     }
     cartEmptyCheck();
@@ -450,26 +451,26 @@ function removeFromLocalStorage(event) {
   var itemTitle = remove.parentElement.parentElement.querySelector('.cart__item_title').innerText;
   // console.log(itemTitle); // название товара
   if (localStorage.getItem(itemTitle)) {
-    localStorage.removeItem(itemTitle)
+    localStorage.removeItem(itemTitle);
   }
 
   if (document.querySelector('.order')) {
     if (document.querySelector('.cart__items').innerHTML === "") {
-      window.location.href = "index.html"
+      window.location.href = "index.html";
     }
   }
 }
 
 function updateQuantityInLocalStorage(event) {
-  var counter = event.target.value; // counter on cartItem in Cart Modal Window
 
+  var counter = event.target.value; // counter on cartItem in Cart Modal Window
   var cartItemTitle = event.target.parentElement.parentElement.querySelector('.cart__item_title').innerText; // cart title
 
   if (localStorage.getItem(cartItemTitle)) {
-    var itemInStorage_deserialized = JSON.parse(localStorage.getItem(cartItemTitle)); // taking appropriate item from localStorage and converting back to an object
-    itemInStorage_deserialized[1] = counter; // updating its counter in object
-    itemInStorage_serialized = JSON.stringify(itemInStorage_deserialized) // back to string form to export to localStorage
-    localStorage.setItem(cartItemTitle, itemInStorage_serialized) // update current value of appropriate key in localStorage
+    var itemInStorageDeserialized = JSON.parse(localStorage.getItem(cartItemTitle)); // taking appropriate item from localStorage and converting back to an object
+    itemInStorageDeserialized[1] = counter; // updating its counter in object
+    var itemInStorageSerialized = JSON.stringify(itemInStorageDeserialized); // back to string form to export to localStorage
+    localStorage.setItem(cartItemTitle, itemInStorageSerialized); // update current value of appropriate key in localStorage
   }
 }
 
@@ -500,7 +501,7 @@ for (var i = 0; i < removeCartItemButtons.length; i++) {
 const addToCartButtons = document.querySelectorAll(".catalog__card_cart");
 for (var i = 0; i < addToCartButtons.length; i++) {
   var button = addToCartButtons[i];
-  button.addEventListener('click', addToCartClicked) // отслеживаем клик у кнопок "Добавить в корзину"
+  button.addEventListener('click', addToCartClicked); // отслеживаем клик у кнопок "Добавить в корзину"
 }
 
 function addToCartClicked(event) {
@@ -527,8 +528,8 @@ function addItemToCart(title, imageSrc, itemCount) {
   var cartItemNames = cartItems.querySelectorAll('.cart__item_title');
   for (var i = 0; i < cartItemNames.length; i++) {
     if (cartItemNames[i].innerText == title) {
-      alert('Этот товар уже в корзине')
-      return
+      alert('Этот товар уже в корзине');
+      return;
     }
   }
 
@@ -538,22 +539,112 @@ function addItemToCart(title, imageSrc, itemCount) {
   </div>
   <div class="cart__item_title">${title}</div>
   <div class="cart__item_buttons">
-    <button class="card-page__info_minus" onclick="minus(this)"></button>
+    <button class="card-page__info_minus" onclick="minusOnCart(this)"></button>
     <input type="number" value="${itemCount}" min="1" step="1" class="cart__item_quantity">
-    <button class="card-page__info_plus" onclick="plus(this)"></button>
+    <button class="card-page__info_plus" onclick="plusOnCart(this)"></button>
     <button class="button cart__item_remove">&times;</button>
   </div>`; // HTML единицы товара в корзине (контент)
   cartItem.innerHTML = cartItemContent; // добавляем контент как "внутренний HTML" к созданному div'у
   cartItems.appendChild(cartItem); // подставляем созданный div с его контентом В НАЧАЛО обертки cart__items
   
   cartItem.querySelector('.cart__item_buttons').querySelector('.cart__item_quantity').addEventListener('change', quantityChanged); // >=1
-  cartItem.querySelector('.cart__item_buttons').querySelector('.cart__item_remove').addEventListener('click', removeCartItem)
+  cartItem.querySelector('.cart__item_buttons').querySelector('.cart__item_remove').addEventListener('click', removeCartItem);
   cartItem.querySelector('.cart__item_buttons').querySelector('.cart__item_remove').addEventListener('click', removeFromLocalStorage);
 
   addItemToLocalStorage(title, imageSrc, itemCount);
   updateCounterOnCartIcon(); // Обновим счетчик над иконкой корзины
   showHideCounterOnCartIcon(); // скрыть счетчик кол-ва товара в корзине, если корзина пустая
   cartEmptyCheck();
+}
+
+
+
+let cartItemMinusButton = document.querySelectorAll('.card-page__info_minus');
+let cartItemPlusButton = document.querySelectorAll('.card-page__info_plus');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// счетчики
+function plusOnCart(el) {
+  var input = el.parentElement.children[1];
+    input.value++;
+
+    if (isNaN(input.value) || input.value <= 0) {
+      input.value = 1;
+    }
+
+    var counter = input.value;
+    var cartItemTitle = input.parentElement.parentElement.querySelector('.cart__item_title').innerText;
+
+    if (localStorage.getItem(cartItemTitle)) {
+      var itemInStorageDeserialized = JSON.parse(localStorage.getItem(cartItemTitle));
+      itemInStorageDeserialized[1] = counter;
+      var itemInStorageSerialized = JSON.stringify(itemInStorageDeserialized);
+      localStorage.setItem(cartItemTitle, itemInStorageSerialized);
+    }
+    
+    updateCounterOnCartIcon(counter); // Обновим счетчик над иконкой корзины
+    // showHideCounterOnCartIcon(counter); // скрыть счетчик кол-ва товара в корзине, если корзина пустая
+    // cartEmptyCheck(counter);
+
+  if (el.parentNode.children[1].value > 99) {
+    el.parentNode.children[1].style.width = '36px';
+  } else {
+    el.parentNode.children[1].style.width = '';
+  }
+}
+
+function minusOnCart(el) {
+  if (el.parentNode.children[1].value > 1) {
+    var input = el.parentElement.children[1];
+    input.value--;
+
+    if (isNaN(input.value) || input.value <= 0) {
+      input.value = 1;
+    }
+
+    var counter = input.value;
+    var cartItemTitle = input.parentElement.parentElement.querySelector('.cart__item_title').innerText;
+
+    if (localStorage.getItem(cartItemTitle)) {
+      var itemInStorageDeserialized = JSON.parse(localStorage.getItem(cartItemTitle));
+      itemInStorageDeserialized[1] = counter;
+      var itemInStorageSerialized = JSON.stringify(itemInStorageDeserialized);
+      localStorage.setItem(cartItemTitle, itemInStorageSerialized);
+    }
+    
+    updateCounterOnCartIcon(counter); // Обновим счетчик над иконкой корзины
+    // showHideCounterOnCartIcon(counter); // скрыть счетчик кол-ва товара в корзине, если корзина пустая
+    // cartEmptyCheck(counter);  
+  }
+  if (el.parentNode.children[1].value > 99) {
+    el.parentNode.children[1].style.width = '36px';
+  } else {
+    el.parentNode.children[1].style.width = '';
+  }
+}
+
+
+function plusSimple(el) {
+  el.parentElement.children[1].value++;
+}
+
+function minusSimple(el) {
+  if (el.parentElement.children[1].value > 1) {
+    el.parentElement.children[1].value--;
+  }
 }
 
 
@@ -619,7 +710,6 @@ for (i = 0; i < l; i++) {
   });
 }
 
-
 function closeAllSelect(elmnt) {
   /*a function that will close all select boxes in the document,
   except the current select box:*/
@@ -630,7 +720,7 @@ function closeAllSelect(elmnt) {
   yl = y.length;
   for (i = 0; i < yl; i++) {
     if (elmnt == y[i]) {
-      arrNo.push(i)
+      arrNo.push(i);
     } else {
       y[i].classList.remove("select-arrow-active");
     }
@@ -645,31 +735,3 @@ function closeAllSelect(elmnt) {
 /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
-
-
-
-
-
-
-
-
-// COUNTER на каждой карточке товара в каталоге
-function plus(el) {
-  el.parentNode.children[1].value++;
-  if (el.parentNode.children[1].value > 99) {
-    el.parentNode.children[1].style.width = '36px';
-  } else {
-    el.parentNode.children[1].style.width = '';
-  }
-}
-
-function minus(el) {
-  if (el.parentNode.children[1].value > 1) {
-    el.parentNode.children[1].value--;
-  }
-  if (el.parentNode.children[1].value > 99) {
-    el.parentNode.children[1].style.width = '36px';
-  } else {
-    el.parentNode.children[1].style.width = '';
-  }
-}
