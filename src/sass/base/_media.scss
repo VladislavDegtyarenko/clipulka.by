@@ -473,6 +473,9 @@
       }
    }
    .cart {
+      &__items {
+         margin-bottom: 0;
+      }
       &__buttons {
          flex-wrap: wrap;
          flex-direction: column-reverse;
