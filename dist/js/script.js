@@ -538,7 +538,9 @@ function addItemToCart(title, imageSrc, itemCount) {
   </div>
   <div class="cart__item_title">${title}</div>
   <div class="cart__item_buttons">
+    <button class="card-page__info_minus" onclick="minus(this)"></button>
     <input type="number" value="${itemCount}" min="1" step="1" class="cart__item_quantity">
+    <button class="card-page__info_plus" onclick="plus(this)"></button>
     <button class="button cart__item_remove">&times;</button>
   </div>`; // HTML единицы товара в корзине (контент)
   cartItem.innerHTML = cartItemContent; // добавляем контент как "внутренний HTML" к созданному div'у
@@ -663,7 +665,7 @@ function plus(el) {
 
 function minus(el) {
   if (el.parentNode.children[1].value > 1) {
-    el.parentNode.children[1].value--
+    el.parentNode.children[1].value--;
   }
   if (el.parentNode.children[1].value > 99) {
     el.parentNode.children[1].style.width = '36px';

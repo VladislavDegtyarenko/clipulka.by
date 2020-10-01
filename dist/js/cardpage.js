@@ -10,7 +10,7 @@ function addToCartFromCardPageClicked(event) {
   var catalogPageSide = button.parentElement.parentElement;
   var title = catalogPageSide.querySelector(".card-page__info_heading").innerHTML;
   var itemCount = catalogPageSide.querySelector('#points').value;
-  var imageSrc = catalogPageSide.parentElement.querySelector('.card-page__photos_big').children[0].children[0].srcset;
+  var imageSrc = catalogPageSide.parentElement.querySelector('.card-page__photos_big').children[0].src;
   addItemToCart(title, imageSrc, itemCount); // Берем параметры у карточки товара: имя и ссылка на картинку
 
   // открытие корзины

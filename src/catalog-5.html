@@ -50,9 +50,9 @@
                         <tr>
                            <th class="card-page__info_property">Количество</th>
                            <td class="card-page__info_value">
-                              <form class="card-page__info_counter" action="/action_page.php">
-                                 <input type="number" id="points" name="points" value="1" step="1" min="1">
-                              </form>
+                              <button class="card-page__info_minus" onclick="minus(this)"></button>
+						            <input value="1" min="1" type="number" id="points" class="catalog__card_counter">
+						            <button class="card-page__info_plus" onclick="plus(this)"></button>
                            </td>
                         </tr>
                         <tr>

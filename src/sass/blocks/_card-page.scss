@@ -61,6 +61,29 @@
    &__info {
       &_value {
          height: 100%;
+         display: flex;
+      }
+      &_minus {
+         background: url('../icons/minus-black.svg') center center no-repeat;
+         &:active, &:focus {
+            outline: none;
+         }
+         border: none;
+         width: 18px;
+         height: 18px;
+         opacity: 0.7;
+         margin: 0 2px;
+      }
+      &_plus {
+         background: url('../icons/plus-black.svg') center center no-repeat;
+         &:active, &:focus {
+            outline: none;
+         }
+         border: none;
+         width: 18px;
+         height: 18px;
+         opacity: 0.7;
+         margin: 0 2px;
       }
       &_counter {
          height: 100%;
