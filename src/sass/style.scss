@@ -55,7 +55,7 @@ iframe {
 .bodyNoScroll {
    overflow-y:hidden; 
    position: relative; 
-   margin-right: var(--widthReflow);
+   margin-right: $widthReflow;
 }
 
 @import 'blocks/buttons';

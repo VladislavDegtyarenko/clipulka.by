@@ -518,3 +518,17 @@
       }
    }
 }
+
+/* smartphones, touchscreens */
+@media (hover: none) and (pointer: coarse) {
+   .bodyNoScroll {
+      margin-right: 0;
+   }
+}
+
+/* stylus-based screens */
+@media (hover: none) and (pointer: fine) {
+   .bodyNoScroll {
+      margin-right: 0;
+   }
+}
