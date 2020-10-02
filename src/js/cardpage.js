@@ -3,7 +3,7 @@
 
 // add Item To Cart From Card Page
 const addToCartFromCardPage = document.querySelector("#addToCartFromCardPage");
-addToCartFromCardPage.addEventListener('click', addToCartFromCardPageClicked)
+addToCartFromCardPage.addEventListener('click', addToCartFromCardPageClicked);
 
 function addToCartFromCardPageClicked(event) { 
   var button = event.target;
@@ -11,6 +11,7 @@ function addToCartFromCardPageClicked(event) {
   var title = catalogPageSide.querySelector(".card-page__info_heading").innerHTML;
   var itemCount = catalogPageSide.querySelector('#points').value;
   var imageSrc = catalogPageSide.parentElement.querySelector('.card-page__photos_big').children[0].src;
+  document.body.classList.add('bodyNoScroll');
   addItemToCart(title, imageSrc, itemCount); // Берем параметры у карточки товара: имя и ссылка на картинку
 
   // открытие корзины
@@ -51,4 +52,8 @@ whatsThePriceModalOverlay.addEventListener('click', function (event) {
     }
   });
 });
+
+
+// Товар уже в корзине
+
 

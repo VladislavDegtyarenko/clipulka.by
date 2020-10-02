@@ -56,7 +56,10 @@ const hamburgerMenu = document.querySelector(".header__hamburger"),
   whatsThePriceModal = document.querySelector(".whatsThePrice"),
   whatsThePriceModalOverlay = document.querySelector("#whatsThePriceOverlay"),
   whatsThePriceCloseModal = document.querySelector(".whatsThePrice__close"),
-  fadeTime = 700;
+  itemAlreadyAddedModal = document.querySelector('.itemAlreadyAdded'),
+  itemAlreadyAddedOverlay = document.querySelector('.itemAlreadyAdded__overlay'),
+  itemAlreadyAddedCloseButton = document.querySelector('.itemAlreadyAdded__close'),
+  fadeTime = 500;
 
 
 
@@ -237,7 +240,7 @@ for (var i = 0; i < contactsButton.length; i++) {
     contactsMenu.classList.toggle("contacts-active");
     contactsOverlay.classList.toggle('overlay-active');
 
-    document.body.classList.toggle('bodyNoScroll');
+    document.body.classList.add('bodyNoScroll');
   }, false);
 }
 
@@ -246,25 +249,23 @@ contactsClose.addEventListener('click', function () {
   contactsMenu.classList.toggle("contacts-active");
   contactsOverlay.classList.toggle('overlay-active');
 
-  document.body.classList.toggle('bodyNoScroll');
+  document.body.classList.remove('bodyNoScroll');
 });
 
 contactsOverlay.addEventListener('click', function () {
   contactsMenu.classList.toggle("contacts-active");
   contactsOverlay.classList.toggle('overlay-active');
 
-  document.body.classList.toggle('bodyNoScroll');
+  document.body.classList.remove('bodyNoScroll');
 
 });
-
-
 
 // Cart
 
 cartOpenButton.addEventListener('click', function (event) {
   event.preventDefault();
   cart.style.display = "flex";
-  document.body.classList.toggle('bodyNoScroll');
+  document.body.classList.add('bodyNoScroll');
   document.body.style.pointerEvents = "none";
   FX.fadeIn(cart, {
     duration: fadeTime,
@@ -277,7 +278,7 @@ cartOpenButton.addEventListener('click', function (event) {
 cartCloseButton.addEventListener('click', function (event) {
   event.preventDefault();
   document.body.style.pointerEvents = "none";
-  document.body.classList.toggle('bodyNoScroll');
+  document.body.classList.remove('bodyNoScroll');
   FX.fadeOut(cart, {
     duration: fadeTime,
     complete: function () {
@@ -290,7 +291,7 @@ cartCloseButton.addEventListener('click', function (event) {
 cartOverlay.addEventListener('click', function (event) {
   event.preventDefault();
   document.body.style.pointerEvents = "none";
-  document.body.classList.toggle('bodyNoScroll');
+  document.body.classList.remove('bodyNoScroll');
   FX.fadeOut(cart, {
     duration: fadeTime,
     complete: function () {
@@ -326,6 +327,33 @@ cartContunueShoppingButton.addEventListener('click', function (event) {
     duration: fadeTime,
     complete: function () {
       cart.style.display = "";
+      document.body.style.pointerEvents = "";
+    }
+  });
+});
+
+
+itemAlreadyAddedCloseButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  document.body.style.pointerEvents = "none";
+  // document.body.classList.remove('bodyNoScroll');
+  FX.fadeOut(itemAlreadyAddedModal, {
+    duration: fadeTime,
+    complete: function () {
+      itemAlreadyAddedModal.style.display = "";
+      document.body.style.pointerEvents = "";
+    }
+  });
+});
+
+itemAlreadyAddedOverlay.addEventListener('click', function (event) {
+  event.preventDefault();
+  document.body.style.pointerEvents = "none";
+  // document.body.classList.remove('bodyNoScroll');
+  FX.fadeOut(itemAlreadyAddedModal, {
+    duration: fadeTime,
+    complete: function () {
+      itemAlreadyAddedModal.style.display = "";
       document.body.style.pointerEvents = "";
     }
   });
@@ -503,8 +531,8 @@ for (var i = 0; i < removeCartItemButtons.length; i++) {
 const addToCartButtons = document.querySelectorAll(".catalog__card_cart");
 for (var i = 0; i < addToCartButtons.length; i++) {
   var button = addToCartButtons[i];
-  button.addEventListener('click', addToCartClicked); // отслеживаем клик у кнопок "Добавить в корзину"
-}
+  button.addEventListener('click', addToCartClicked);
+} // отслеживаем клик у кнопок "Добавить в корзину"
 
 function addToCartClicked(event) {
   var button = event.target;
@@ -512,7 +540,10 @@ function addToCartClicked(event) {
   var title = catalogItem.querySelector(".catalog__card_text").querySelector(".catalog__card_descr").innerHTML;
   var itemCount = catalogItem.querySelector('.catalog__card_buttons').querySelector('.catalog__card_counter').value;
   var imageSrc = catalogItem.querySelector(".catalog__card_img").children[0].src;
+  document.body.classList.add('bodyNoScroll');
   addItemToCart(title, imageSrc, itemCount); // Берем параметры у карточки товара: имя и ссылка на картинку
+
+
 
   // открытие корзины
   cart.style.display = "flex";
@@ -530,10 +561,18 @@ function addItemToCart(title, imageSrc, itemCount) {
   var cartItemNames = cartItems.querySelectorAll('.cart__item_title');
   for (var i = 0; i < cartItemNames.length; i++) {
     if (cartItemNames[i].innerText == title) {
-      window.alert('Этот товар уже в корзине');
+      // window.alert('Этот товар уже в корзине');
+      itemAlreadyAddedModal.style.display = "flex";
+      FX.fadeIn(itemAlreadyAddedModal, {
+        duration: fadeTime,
+        complete: function () {}
+      });
+
       return;
     }
   }
+
+  
 
   var cartItemContent = `
   <div class="cart__item_img">
