@@ -530,7 +530,7 @@ function addItemToCart(title, imageSrc, itemCount) {
   var cartItemNames = cartItems.querySelectorAll('.cart__item_title');
   for (var i = 0; i < cartItemNames.length; i++) {
     if (cartItemNames[i].innerText == title) {
-      alert('Этот товар уже в корзине');
+      window.alert('Этот товар уже в корзине');
       return;
     }
   }
