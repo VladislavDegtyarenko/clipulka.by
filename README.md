@@ -1,15 +1,14 @@
 # Clipulka.by
 
-
 <img width="180" alt="clipulka" src="https://clipulka.by/catalog/view/theme/clipulka/assets/icons/logo.svg">
 
-The website is developed for clipulka.by - a company for auto mounting and window parts based in Belarus.
-
-Front-end development for "Ocular" - large-scale medical center for adult and pediatric ophthalmology.
 
 
+The website is developed for **clipulka.by** - a company for auto mounting and window parts based in Belarus.
 
 [Click here](https://vladislavdegtyarenko.github.io/clipulka.by/dist/index.html) to view the project
+
+
 
 ### Requirements for the project
 - **HTML** layout, W3C validated
